@@ -1,0 +1,12 @@
+{
+  "name": "deedeegr/public_html/328/application",
+  "authors" : [
+    {
+      "name": "Dee Brecke",
+      "email": "brecke.deirdre@student.greenriver.edu"
+    }
+  ],
+  "require": {
+    "bcosca/fatfree-core": "dev-master"
+  }
+}
