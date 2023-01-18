@@ -11,5 +11,8 @@ background-color: azure;
 .btn-primary{
     border-radius:10px;
     background-color: black;
-
+}
+h3{
+    /*this doesn't seem to be working*/
+    text-align: center;
 }
