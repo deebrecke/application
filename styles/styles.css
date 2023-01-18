@@ -13,6 +13,8 @@ background-color: azure;
     background-color: black;
 }
 h3{
-    /*this doesn't seem to be working*/
+    text-align: center;
+}
+.container{
     text-align: center;
 }
