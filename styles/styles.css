@@ -1,6 +1,15 @@
 h1{
     font-family: "Comic Sans MS";
 }
+body{
+background-color: azure;
+}
 #feather{
+    border-radius: 20px;
+}
+
+.btn-primary{
+    border-radius:10px;
+    background-color: black;
 
 }
