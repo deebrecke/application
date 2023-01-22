@@ -1,4 +1,10 @@
 <?php
+/*
+Dee Brecke
+1/15/23
+This file defaults to the home page, turns on error reporting,
+requires vendor/autoload and runs fat free
+*/
 //turn on error reporting
 ini_set('display_errors', 1);
 error_reporting(E_ALL);

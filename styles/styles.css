@@ -4,17 +4,20 @@ h1{
 body{
 background-color: azure;
 }
+/*round corners on photo*/
 #feather{
     border-radius: 20px;
 }
-
+/*round corners on button*/
 .btn-primary{
     border-radius:10px;
     background-color: black;
 }
+/*Headings for main content centered*/
 h3{
     text-align: center;
 }
+/*center the button at bottom of page*/
 #apply{
     text-align: center;
 }
