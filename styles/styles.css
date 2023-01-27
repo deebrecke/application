@@ -17,7 +17,23 @@ background-color: azure;
 h3{
     text-align: center;
 }
-/*center the button at bottom of page*/
+/*center the button at bottom of page
+apparently this only centers the text within
+the button
+*/
 #apply{
     text-align: center;
+}
+/*THIS centers the button in the div*/
+.buttonDiv{
+    display: flex;
+    justify-content: center;
+}
+.quotes{
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+.content{
+    padding-right: 2rem;
+    padding-left: 2rem;
 }
