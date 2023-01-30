@@ -33,7 +33,10 @@ $f3->route('POST /apply2', function (){
     echo $view->render('views/experience.html');
 });
 
-
+$f3->route('POST /apply3', function (){
+    $view = new Template();
+    echo $view->render('views/summary.html');
+});
 //Run fat free
 $f3->run();
 ?>
