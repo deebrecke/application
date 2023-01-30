@@ -9,20 +9,28 @@ requires vendor/autoload and runs fat free
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
+session_start();
+
 //Require the autoload file
 require_once("vendor/autoload.php");
 
 //Create an instance of the Base class
 $f3 = Base::instance();
 
-//Define a default route ("home page" for hello project)
+//Define a default route ("home page" for application)
 $f3->route('GET /', function(){
-//echo '<h1>Application Home</h1>';
     $view = new Template();
     echo $view->render('views/home.html');
 });
 
+$f3->route('GET /apply1', function (){
+    $view = new Template();
+    echo $view->render('views/personal-info.html');
+});
+
+
+
+
 //Run fat free
 $f3->run();
-
 ?>
