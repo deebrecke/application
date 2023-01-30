@@ -4,7 +4,7 @@
 <body>
 
 <div class="container">
-    <form>
+    <form action="apply2" method="post">
         <h1>Personal Information</h1>
         <hr>
         <div class="row" id="row1">
@@ -12,17 +12,17 @@
                 <div class="row" id="namefields">
                     <div class="col-6">
                         <label for="fName" class="form-label">First Name</label>
-                        <input type="text" class="form-control" id="fName">
+                        <input type="text" class="form-control" id="fName" required>
                     </div>
                     <div class="col-6">
                         <label for="lName" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" id="lName">
+                        <input type="text" class="form-control" id="lName" required>
                     </div>
                 </div>
                 <div class="row" id="emailfield">
                     <div class="col-12">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email">
+                        <input type="email" class="form-control" id="email" required>
                     </div>
                 </div>
             </div>
@@ -44,10 +44,10 @@
             </div>
             <div class="col-4">
                 <label for="phone" class="form-label">Phone</label>
-                <input type="text" class="form-control" id="phone">
+                <input type="text" class="form-control" id="phone" required>
             </div>
             <div class="col-4 d-flex align-items-end">
-                <button class="btn btn-primary w-100">Next ></button>
+                <button class="btn btn-primary w-100"><a href = "apply2">Next ></a></button>
             </div>
         </div>
 

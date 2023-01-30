@@ -28,7 +28,10 @@ $f3->route('GET /apply1', function (){
     echo $view->render('views/personal-info.html');
 });
 
-
+$f3->route('POST /apply2', function (){
+    $view = new Template();
+    echo $view->render('views/experience.html');
+});
 
 
 //Run fat free
