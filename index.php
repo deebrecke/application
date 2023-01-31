@@ -30,8 +30,8 @@ $f3->route('GET|POST /apply1', function ($f3){
         $_SESSION['fName'] = $_POST['fName'];
         $_SESSION['lName'] = $_POST['lName'];
         $_SESSION['email'] = $_POST['email'];
-        //$_SESSION['state'] = $_POST['state'];
-        //$_SESSION['phone'] = $_POST['phone'];
+        $_SESSION['state'] = $_POST['state'];
+        $_SESSION['phone'] = $_POST['phone'];
 
         //this needs to reroute to experience page once I can get it all to work
         $f3->reroute('summary');
