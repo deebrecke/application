@@ -34,7 +34,7 @@ $f3->route('GET|POST /apply1', function ($f3){
         $_SESSION['phone'] = $_POST['phone'];
 
         //this needs to reroute to experience page once I can get it all to work
-        $f3->reroute('summary');
+        $f3->reroute('apply2');
     }
     //first rendering of the page
     $view = new Template();
@@ -43,17 +43,8 @@ $f3->route('GET|POST /apply1', function ($f3){
 
 //personal info page--GET loads the page, POST saves the info and reroutes
 $f3->route('GET|POST /apply2', function (){
-//    //once the form is filled out, add to session array
-//    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-//        $_SESSION['fName'] = $_POST['fName'];
-//        $_SESSION['lName'] = $_POST['lName'];
-//        $_SESSION['email'] = $_POST['email'];
-//        //this needs to reroute to job openings page once I can get it all to work
-//        $f3->reroute('summary');
-//    }
-//    //first rendering of the page
     $view = new Template();
-    echo $view->render('views/summary-page.html');
+    echo $view->render('views/experience.html');
 });
 
 $f3->route('GET|POST /summary', function(){
