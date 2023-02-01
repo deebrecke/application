@@ -70,8 +70,24 @@ $f3->route('GET|POST /apply3', function ($f3){
         $_SESSION['javascript'] = $_POST['javascript'];
         $_SESSION['php'] = $_POST['php'];
         $_SESSION['java'] = $_POST['java'];
+        $_SESSION['python'] = $_POST['python'];
+
+        $_SESSION['html'] = $_POST['html'];
+        $_SESSION['css'] = $_POST['css'];
+        $_SESSION['react'] = $_POST['react'];
+        $_SESSION['nodejs'] = $_POST['nodejs'];
+
+        $_SESSION['saas'] = $_POST['saas'];
+        $_SESSION['healthtech'] = $_POST['healthtech'];
+        $_SESSION['agtech'] = $_POST['agtech'];
+        $_SESSION['hrtech'] = $_POST['hrtech'];
+
+        $_SESSION['indtech'] = $_POST['indtech'];
+        $_SESSION['cybersecurity'] = $_POST['cybersecurity'];
+
         $f3->reroute('summary');
     }
+
 
     $view = new Template();
     echo $view->render('views/job-openings.html');
