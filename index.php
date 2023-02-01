@@ -46,9 +46,9 @@ $f3->route('GET|POST /apply1', function ($f3){
 $f3->route('GET|POST /apply2', function ($f3){
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['bio'] = $_POST['bio'];
-//        $_SESSION['github'] = $_POST['github'];
-//        $_SESSION['experience'] = $_POST['experience'];
-//        $_SESSION['relo'] = $_POST['relo'];
+        $_SESSION['github'] = $_POST['github'];
+        $_SESSION['experience'] = $_POST['experience'];
+        $_SESSION['relo'] = $_POST['relo'];
 
         $f3->reroute('apply3');
     }
@@ -67,6 +67,9 @@ $f3->route('GET|POST /summary', function(){
 $f3->route('GET|POST /apply3', function ($f3){
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         //add in the check-boxes here
+        $_SESSION['javascript'] = $_POST['javascript'];
+        $_SESSION['php'] = $_POST['php'];
+        $_SESSION['java'] = $_POST['java'];
         $f3->reroute('summary');
     }
 

@@ -7,9 +7,8 @@
         <hr>
         <div class="row">
             <div class="col-8" id="bio-box">
-                <label for="bio" class="form-label">Biography</label>
-                <!--This looks right until you type info in, but it puts cursor in middle of box -->
-                <input type="text" class="form-control" id="bio" name="bio">
+                <label for="bio" class="form-label">Biography:</label>
+                <textarea cols="5" rows="10" class="form-control" id="bio" name="bio"></textarea>
             </div>
 
             <div class="col-4" id="other-stuff">
@@ -22,9 +21,9 @@
                 <div class="row">
                     <label class="control-label">Years Experience</label>
                     <div class="d-flex justify-content-between">
-                        <label><input type="radio" name="experience" value="none"> 0-2 </label>
-                        <label><input type="radio" name="experience" value="some"> 2-4 </label>
-                        <label><input type="radio" name="experience" value="lots"> 4+ </label>
+                        <label><input type="radio" name="experience" value="0-2"> 0-2 </label>
+                        <label><input type="radio" name="experience" value="2-4"> 2-4 </label>
+                        <label><input type="radio" name="experience" value="4+"> 4+ </label>
                     </div>
                 </div>
                 <br>
@@ -32,9 +31,9 @@
                 <div class="row">
                     <label class="control-label">Willing to Relocate?</label>
                     <div class="d-flex justify-content-between">
-                        <label><input type="radio" name="relo" value="reloyes"> Yes </label>
-                        <label><input type="radio" name="relo" value="relono"> No </label>
-                        <label><input type="radio" name="relo" value="relomaybe"> Maybe </label>
+                        <label><input type="radio" name="relo" value="Yes"> Yes </label>
+                        <label><input type="radio" name="relo" value="No"> No </label>
+                        <label><input type="radio" name="relo" value="Maybe"> Maybe </label>
                     </div>
                 </div>
                 <br>
