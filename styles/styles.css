@@ -1,11 +1,18 @@
+/*
+This file contains all of the styles for the application project
+ */
 h1{
     font-family: "Comic Sans MS", serif;
+    text-decoration: none;
 }
 body{
 background-color: azure;
 }
 /*round corners on photo*/
 #feather{
+    border-radius: 20px;
+}
+#sirzigs{
     border-radius: 20px;
 }
 /*round corners on button*/
@@ -16,6 +23,10 @@ background-color: azure;
 /*Headings for main content centered*/
 h3{
     text-align: center;
+}
+/*Heading for Summary not centered*/
+#summary-header{
+    text-align: left;
 }
 /*center the button at bottom of page
 apparently this only centers the text within
@@ -38,6 +49,6 @@ the button
     padding-left: 2rem;
 }
 #privacy-policy{
-    margin-top: 25px;
     background-color: lightgrey;
+    border-radius: 10px;
 }

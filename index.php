@@ -3,7 +3,8 @@
 Dee Brecke
 1/15/23
 This file defaults to the home page, turns on error reporting,
-requires vendor/autoload and runs fat free
+requires vendor/autoload and runs fat free. It handles all of the routing
+for the form.
 */
 //turn on error reporting
 ini_set('display_errors', 1);
@@ -25,6 +26,9 @@ $f3->route('GET /', function(){
 
 //personal info page--GET loads the page, POST saves the info and reroutes
 $f3->route('GET|POST /apply1', function ($f3){
+
+    //do a var dump to check data
+    // var_dump ($_POST);
 
     //once the form is filled out, add to session array
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -57,8 +61,6 @@ $f3->route('GET|POST /apply2', function ($f3){
     echo $view->render('views/experience.html');
 });
 
-
-
 $f3->route('GET|POST /summary', function(){
     $view = new Template();
     echo $view->render('views/summary-page.html');
@@ -67,27 +69,9 @@ $f3->route('GET|POST /summary', function(){
 $f3->route('GET|POST /apply3', function ($f3){
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         //add in the check-boxes here
-        $_SESSION['javascript'] = $_POST['javascript'];
-        $_SESSION['php'] = $_POST['php'];
-        $_SESSION['java'] = $_POST['java'];
-        $_SESSION['python'] = $_POST['python'];
-
-        $_SESSION['html'] = $_POST['html'];
-        $_SESSION['css'] = $_POST['css'];
-        $_SESSION['react'] = $_POST['react'];
-        $_SESSION['nodejs'] = $_POST['nodejs'];
-
-        $_SESSION['saas'] = $_POST['saas'];
-        $_SESSION['healthtech'] = $_POST['healthtech'];
-        $_SESSION['agtech'] = $_POST['agtech'];
-        $_SESSION['hrtech'] = $_POST['hrtech'];
-
-        $_SESSION['indtech'] = $_POST['indtech'];
-        $_SESSION['cybersecurity'] = $_POST['cybersecurity'];
-
+        $_SESSION['jobs'] = implode(", ", $_POST['jobs']);
         $f3->reroute('summary');
     }
-
 
     $view = new Template();
     echo $view->render('views/job-openings.html');

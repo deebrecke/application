@@ -1,3 +1,7 @@
+<!--Dee Brecke
+ 2/2/2023
+ This page displays all the information that was entered into the forms on the other pages
+ -->
 <include href="views/head-tags.html"></include>
 <include href="views/header.html"></include>
 
@@ -12,6 +16,7 @@
             <p>State: {{@SESSION.state}}</p>
             <hr>
             <p>Phone: {{@SESSION.phone}}</p>
+            <hr>
             <p>GitHub link: {{@SESSION.github}}</p>
             <hr>
             <p>Experience: {{@SESSION.experience}} years</p>
@@ -19,22 +24,30 @@
             <p>Willing to relocate? {{@SESSION.relo}}</p>
             <hr>
             <!--this is something I need help on-->
-            <p>Mailing lists: </p>
+            <p>Mailing lists: {{@SESSION.jobs}}</p>
 
         </div>
         <div class="col-6">
-            <img src="images/sirzigs.png">
+            <img src="images/sirzigs.png" id="sirzigs" alt="Picture of Ziggy wearing a scarf">
         </div>
     </div>
     <div class="row">
         <div class="col-6">
-
         </div>
         <div class="col-6">
-            <h3>Summary</h3><br>
+            <h3 id="summary-header">Summary</h3><br>
             <p>{{@SESSION.bio}}</p>
         </div>
     </div>
+
+   <div class="row">
+       <div class="col-3">
+       </div>
+       <div class="col-6 d-flex align-items-end">
+           <button class="btn btn-primary w-100" type="submit"> Submit My Application!</button>
+       </div>
+       <div class="col-3"></div>
+   </div>
 
 
 </p>
