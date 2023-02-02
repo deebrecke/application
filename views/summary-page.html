@@ -1,23 +1,43 @@
 <include href="views/head-tags.html"></include>
 <include href="views/header.html"></include>
 
-<h1>summary page</h1>
 
-<p>My name is {{@SESSION.fName}} {{@SESSION.lName}}.  My email address is
-    {{@SESSION.email}}. I live in {{@SESSION.state}}. My phone number is {{@SESSION.phone}}</p>
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <p>Name: {{@SESSION.fName}} {{@SESSION.lName}}</p>
+            <hr>
+            <p>Email: {{@SESSION.email}}</p>
+            <hr>
+            <p>State: {{@SESSION.state}}</p>
+            <hr>
+            <p>Phone: {{@SESSION.phone}}</p>
+            <p>GitHub link: {{@SESSION.github}}</p>
+            <hr>
+            <p>Experience: {{@SESSION.experience}} years</p>
+            <hr>
+            <p>Willing to relocate? {{@SESSION.relo}}</p>
+            <hr>
+            <!--this is something I need help on-->
+            <p>Mailing lists: </p>
 
-<br>
+        </div>
+        <div class="col-6">
+            <img src="images/ZiggyFeatherSmall.jpg">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
 
-<p>Here is what I said about myself: {{@SESSION.bio}}</p>
-<p>My github link: {{@SESSION.github}}</p>
-<p>I have {{@SESSION.experience}} years experience.</p>
-<p>Willing to relocate? {{@SESSION.relo}}</p>
+        </div>
+        <div class="col-6">
+            <h3>Summary</h3><br>
+            <p>{{@SESSION.bio}}</p>
+        </div>
+    </div>
 
-<p>Mailing lists: {{@SESSION.javascript}}
-    {{@SESSION.PHP}}
-    {{@SESSION.java}}
 
 </p>
-
+</div>
 </body>
 </html>
