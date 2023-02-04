@@ -1,7 +1,10 @@
 /*
+Dee Brecke
+2/2/2023
+328/application/styles/styles.css
 This file contains all of the styles for the application project
  */
-h1{
+.corpname{
     font-family: "Comic Sans MS", serif;
     text-decoration: none;
 }
@@ -40,6 +43,7 @@ the button
     display: flex;
     justify-content: center;
 }
+/*Indent quote section on home page*/
 .quotes{
     padding-left: 2rem;
     padding-right: 2rem;

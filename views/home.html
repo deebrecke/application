@@ -1,26 +1,26 @@
 <!--
 Dee Brecke
 1/15/2023
+328/application/views/home.html
 Home page of job application website. This page gives basic information on an internship
 and describes the company in some detail. It also contains a button that takes
 the user to the first part of the application form.
 -->
 <include href="views/head-tags.html"></include>
 <body>
-<!-- -->
 <div class="container-fluid">
+    <!--Separate header for this page only that includes an "apply now" button and the company name
+     is not clickable (already home) but is otherwise identical-->
     <header>
         <div class="bg-primary text-white p-4 col-12" id="header" >
-            <!--logo currently not working. Something to work on in the future
-            <img src="../images/ZiggyFeatherSmaller.jpg" class="ziglogo img-fluid" alt="Ziggycorp logo">-->
             <div class="row">
                 <div class="col-12">
-                    <h1>ZiggyCorp</h1>
+                    <h1 class="corpname">ZiggyCorp</h1>
                     <h6>It's all about the dog!</h6>
                 </div>
             </div>
             <br>
-            <div class=row">
+            <div class=row>
                 <div class="d-flex justify-content-between">
                     <div id="job_title">
                         <h4>Software Development Internship</h4>
@@ -37,7 +37,6 @@ the user to the first part of the application form.
     </header>
 </div>
 <br>
-
 <div class="container-fluid">
     <div class="content">
         <div class="row">
@@ -88,6 +87,8 @@ the user to the first part of the application form.
             </div>
         </div>
     </div>
+    <br>
+    <br>
 </div>
 <!--Javascript bootstrap link for future use-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

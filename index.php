@@ -2,6 +2,7 @@
 /*
 Dee Brecke
 1/15/23
+328/application/index.php
 This file defaults to the home page, turns on error reporting,
 requires vendor/autoload and runs fat free. It handles all of the routing
 for the form.

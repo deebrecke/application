@@ -1,12 +1,17 @@
-<!--This file contains the header to be displayed at the top of
- every page except the home page (which includes an "apply" button)-->
+<!--
+Dee Brecke
+2/2/2023
+328/application/views/header.html
+This file contains the header to be displayed at the top of every page except the home page
+(which includes an "apply" button, and doesn't need the corporation name to be clickable to return home)-->
 <body>
 <div class="container-fluid">
   <header>
     <div class="bg-primary text-white p-4 col-12" id="header" >
       <div class="row">
         <div class="col-12">
-          <a href="/328/application"  class="text-white"><h1>ZiggyCorp</h1></a>
+          <!--Makes the company name clickable to return to home page-->
+          <a href="/328/application"  class="text-white"><h1 class="corpname">ZiggyCorp</h1></a>
           <h6>It's all about the dog!</h6>
         </div>
       </div>

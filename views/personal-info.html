@@ -1,4 +1,8 @@
-<!--This is the first page of the application. The user enters basic contact info here
+<!--
+Dee Brecke
+2/2/2023
+328/application/views/personal-info.html
+This is the first page of the application. The user enters basic contact info here
  and hits the "next" button to go to the "experience" page-->
 <include href="views/head-tags.html"></include>
 <include href="views/header.html"></include>
@@ -36,9 +40,9 @@
                 </div>
             </div>
         </div>
-        <!-- State field needs to be select, defaulted to WA, not text input-->
         <div class="row" id="row2">
             <div class="col-4">
+                <!--Dropdown menu for all 50 states defaulting to WA-->
                 <label for="state" class="form-label">State</label>
                 <select class="form-control" id="state" name="state">
                     <option value="AL">Alabama</option>
@@ -91,7 +95,6 @@
                     <option value="WV">West Virginia</option>
                     <option value="WI">Wisconsin</option>
                     <option value="WY">Wyoming</option>
-
                 </select>
             </div>
             <div class="col-4">

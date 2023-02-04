@@ -1,10 +1,11 @@
-<!--Dee Brecke
+<!--
+Dee Brecke
  2/2/2023
+ 328/application/views/summary-page.html
  This page displays all the information that was entered into the forms on the other pages
  -->
 <include href="views/head-tags.html"></include>
 <include href="views/header.html"></include>
-
 
 <div class="container">
     <div class="row">
@@ -23,11 +24,12 @@
             <hr>
             <p>Willing to relocate? {{@SESSION.relo}}</p>
             <hr>
-            <!--this is something I need help on-->
+            <!--putting data into array and using php on index page prints all boxes checked here-->
             <p>Mailing lists: {{@SESSION.jobs}}</p>
 
         </div>
         <div class="col-6">
+            <!--Temporary placeholder image-->
             <img src="images/sirzigs.png" id="sirzigs" alt="Picture of Ziggy wearing a scarf">
         </div>
     </div>
@@ -48,9 +50,8 @@
        </div>
        <div class="col-3"></div>
    </div>
-
-
-</p>
+    <br>
+    <br>
 </div>
 </body>
 </html>
