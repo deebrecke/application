@@ -14,35 +14,31 @@ This is the first page of the application. The user enters basic contact info he
         <div class="row" id="row1">
             <div class="col-8" id="info-column">
 
-
                 <div class="form-group">
-                <div class="row" id="namefields">
-                    <div class="col-6">
-                        <label for="fname" class="control-label">First Name</label>
-                        <input type="text" class="form-control" id="fname" name="fname">
+                    <div class="row" id="namefields">
+                        <div class="col-6">
+                            <label for="fname" class="control-label">First Name</label>
+                            <input type="text" class="form-control" id="fname" name="name">
+                        </div>
+                        <div class="col-6">
+                            <label for="lName" class="control-label">Last Name</label>
+                            <input type="text" class="form-control" id="lName" name="name">
+                        </div>
+
+                        <check if="{{ isset(@errors['name'])}}">
+                            <span class="err">{{ @errors['name'] }}</span>
+                        </check>
                     </div>
-                    <div class="col-6">
-                        <label for="lName" class="control-label">Last Name</label>
-                        <input type="text" class="form-control" id="lName" name="lname">
-                    </div>
-
-                    <check if="{{ isset(@errors['fname'])}}">
-                        <span class="err">{{ @errors['fname'] }}</span>
-                    </check>
                 </div>
-                </div>
-
-
-
-
-
-
 
                 <div class="row" id="emailfield">
                     <div class="col-12">
                         <label for="email" class="form-label">Email</label>
                         <input type="email" class="form-control" id="email" name="email">
                     </div>
+                    <check if="{{ isset(@errors['email'])}}">
+                        <span class="err">{{ @errors['email'] }}</span>
+                    </check>
                 </div>
             </div>
             <div class="col-4" >

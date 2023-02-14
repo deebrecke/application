@@ -39,18 +39,26 @@ $f3->route('GET|POST /apply1', function ($f3){
     //once the form is filled out, add to session array
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        $fname = trim($_POST['fname']);
-        if(validName($fname)){
-            $_SESSION['fname']= $fname;
+        $name = trim($_POST['name']);
+        if(validName($name)){
+            $_SESSION['name']= $name;
         }
         else{
-            $f3->set('errors["fname"]',
+            $f3->set('errors["name"]',
             'Please enter only alpha chars');
         }
 
-        //$_SESSION['fName'] = $_POST['fName'];
-        $_SESSION['lName'] = $_POST['lName'];
-        $_SESSION['email'] = $_POST['email'];
+        $email=trim($_POST['email']);
+        if(validEmail($email)){
+            $_SESSION['email'] = $email;
+        }
+        else{
+            $f3->set('errors["email"]',
+                'Please enter a valid email address');
+        }
+
+
+
         $_SESSION['state'] = $_POST['state'];
         $_SESSION['phone'] = $_POST['phone'];
 
