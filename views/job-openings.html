@@ -12,43 +12,17 @@ This is the last page of the form on which the user checks boxes to say what
     <form action="#" method="post">
         <h1>Job Openings Mailing Lists</h1>
         <hr>
-        <b>Software Development Jobs</b><br>
+
         <div class="row">
-            <div class="col-3">
-                <input type="checkbox" id="javascript" name="jobs[]" value="Javascript">
-                <label for="javascript">JavaScript</label>
+            <label class="control-label"><b>Software Development Jobs</b></label>
+            <div class="d-flex justify-content-between">
+                <repeat group="{{ @jobs }}" value="{{ @job }}">
+                    <label><input type="checkbox" name="job" value="{{ @job }}"> {{ @job }}</label>
+                </repeat>
             </div>
-            <div class="col-3">
-                <input type="checkbox" id="php" name="jobs[]" value="PHP">
-                <label for="php">PHP</label>
-            </div>
-            <div class="col-3">
-                <input type="checkbox" id="java" name="jobs[]" value="Java">
-                <label for="Java">Java</label>
-            </div>
-            <div class="col-3">
-                <input type="checkbox" id="python" name="jobs[]" value="Python">
-                <label for="javascript">Python</label>
-            </div>
-                <br>
-        </div>
-        <div class="row">
-            <div class="col-3">
-                <input type="checkbox" id="html" name="jobs[]" value="HTML">
-                <label for="html">HTML</label>
-            </div>
-            <div class="col-3">
-                <input type="checkbox" id="css" name="jobs[]" value="CSS">
-                <label for="css">CSS</label>
-            </div>
-            <div class="col-3">
-                <input type="checkbox" id="react" name="jobs[]" value="ReactJS">
-                <label for="react">ReactJS</label>
-            </div>
-            <div class="col-3">
-                <input type="checkbox" id="nodejs" name="jobs[]" value="NodeJS">
-                <label for="nodejs">NodeJS</label>
-            </div><br><br>
+            <check if="{{ isset(@errors['job'])}}">
+                <span class="err">{{ @errors['job'] }}</span>
+            </check>
         </div>
 
         <b>Industry Verticals</b><br>

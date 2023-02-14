@@ -34,9 +34,7 @@ $f3->route('GET|POST /apply1', function ($f3){
 
     //do a var dump to check data
     // var_dump ($_POST);
-
-
-    //once the form is filled out, add to session array
+   //once the form is filled out, add to session array
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $name = trim($_POST['name']);
@@ -72,28 +70,29 @@ $f3->route('GET|POST /apply1', function ($f3){
 });
 
 
-//experience page should work just like personal-info page
 $f3->route('GET|POST /apply2', function ($f3){
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $_SESSION['bio'] = $_POST['bio'];
-        $_SESSION['github'] = $_POST['github'];
-        //$_SESSION['experience'] = $_POST['experience'];
+
+        $github = $_POST['github'];
+        if(validGithub($github)){
+            $_SESSION['github'] = $github;
+        }
+        else{
+            $f3->set('errors["github"]',
+            'Please enter a valid url');
+        }
 
         //Validate the experience
         $yrs = $_POST['yrs'];
         if (validExperience($yrs)) {
-            $_SESSION['meal'] = $yrs;
+            $_SESSION['experience'] = $yrs;
         }
         else {
             $f3->set('errors["yrs"]',
                 'Experience is invalid');
         }
-
-
-
-
-
 
         //Redirect to the next page
         //if there are no errors
@@ -105,11 +104,8 @@ $f3->route('GET|POST /apply2', function ($f3){
 
     }
 
-
     //Add experience to F3 hive
     $f3->set('experience', getExperience());
-
-
 
     $view = new Template();
     echo $view->render('views/experience.html');
@@ -123,10 +119,23 @@ $f3->route('GET|POST /summary', function(){
 $f3->route('GET|POST /apply3', function ($f3){
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         //add in the check-boxes here
-        $_SESSION['jobs'] = implode(", ", $_POST['jobs']);
-        $f3->reroute('summary');
+        $job = $_POST['job'];
+        if(validSelectionsJobs($job)){
+            $_SESSION['job'] = $job;
+        }
+        else{
+            $f3->set('errors["job"]',
+            'Job selection is invalid');
+        }
+
+
+        if (empty($f3->get('errors'))) {
+            $f3->reroute('summary');
+        }
+
     }
 
+    $f3->set('jobs', getJobs());
     $view = new Template();
     echo $view->render('views/job-openings.html');
 });

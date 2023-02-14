@@ -23,6 +23,10 @@ This page is where the user writes all about themselves. It also gathers informa
                     <label for="github" class="form-label">Github Link</label>
                     <input type="text" class="form-control" id="github" name="github">
                 </div>
+                <check if="{{ isset(@errors['github'])}}">
+                    <span class="err">{{ @errors['github'] }}</span>
+                </check>
+
                 <br>
                 <div class="row">
                     <label class="control-label">Years Experience</label>

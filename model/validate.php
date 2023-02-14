@@ -4,7 +4,7 @@ function validName($name){
 }
 
 function validGithub($github){
-    return true;
+    return filter_var($github, FILTER_VALIDATE_URL);
 }
 
 function validExperience($experience){
@@ -20,7 +20,7 @@ function validEmail($email){
 }
 
 function validSelectionsJobs($jobs){
-    return true;
+    return in_array($jobs, getJobs());
 }
 
 function validSelectionsVerticals($verticals){
@@ -28,7 +28,4 @@ function validSelectionsVerticals($verticals){
 }
 
 //required fields: “First Name”, “Last Name”, “Email”, “Phone”, “Github Link”, and “Years Experience”
-// $email = test_input($_POST["email"]);
-//if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-//  $emailErr = "Invalid email format";
-//}
+
