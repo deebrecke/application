@@ -15,6 +15,10 @@ session_start();
 
 //Require the autoload file
 require_once("vendor/autoload.php");
+require_once('model/data-layer.php');
+require_once('model/validate.php');
+
+//var_dump(getExperience()); this was written correctly
 
 //Create an instance of the Base class
 $f3 = Base::instance();
@@ -31,15 +35,28 @@ $f3->route('GET|POST /apply1', function ($f3){
     //do a var dump to check data
     // var_dump ($_POST);
 
+
     //once the form is filled out, add to session array
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $_SESSION['fName'] = $_POST['fName'];
+
+        $fname = trim($_POST['fname']);
+        if(validName($fname)){
+            $_SESSION['fname']= $fname;
+        }
+        else{
+            $f3->set('errors["fname"]',
+            'Please enter only alpha chars');
+        }
+
+        //$_SESSION['fName'] = $_POST['fName'];
         $_SESSION['lName'] = $_POST['lName'];
         $_SESSION['email'] = $_POST['email'];
         $_SESSION['state'] = $_POST['state'];
         $_SESSION['phone'] = $_POST['phone'];
 
-        $f3->reroute('apply2');
+        if (empty($f3->get('errors'))) {
+            $f3->reroute('apply2');
+        }
     }
     //first rendering of the page
     $view = new Template();
@@ -50,13 +67,41 @@ $f3->route('GET|POST /apply1', function ($f3){
 //experience page should work just like personal-info page
 $f3->route('GET|POST /apply2', function ($f3){
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
         $_SESSION['bio'] = $_POST['bio'];
         $_SESSION['github'] = $_POST['github'];
-        $_SESSION['experience'] = $_POST['experience'];
+        //$_SESSION['experience'] = $_POST['experience'];
+
+        //Validate the experience
+        $yrs = $_POST['yrs'];
+        if (validExperience($yrs)) {
+            $_SESSION['meal'] = $yrs;
+        }
+        else {
+            $f3->set('errors["yrs"]',
+                'Experience is invalid');
+        }
+
+
+
+
+
+
+        //Redirect to the next page
+        //if there are no errors
+        if (empty($f3->get('errors'))) {
+            $f3->reroute('apply3');
+        }
+
         $_SESSION['relo'] = $_POST['relo'];
 
-        $f3->reroute('apply3');
     }
+
+
+    //Add experience to F3 hive
+    $f3->set('experience', getExperience());
+
+
 
     $view = new Template();
     echo $view->render('views/experience.html');

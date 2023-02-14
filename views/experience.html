@@ -24,18 +24,19 @@ This page is where the user writes all about themselves. It also gathers informa
                     <input type="text" class="form-control" id="github" name="github">
                 </div>
                 <br>
-
                 <div class="row">
                     <label class="control-label">Years Experience</label>
-                    <!--put some consistent space between the elements-->
                     <div class="d-flex justify-content-between">
-                        <label><input type="radio" name="experience" value="0-2"> 0-2 </label>
-                        <label><input type="radio" name="experience" value="2-4"> 2-4 </label>
-                        <label><input type="radio" name="experience" value="4+"> 4+ </label>
+                        <repeat group="{{ @experience }}" value="{{ @yrs }}">
+                            <label><input type="radio" name="yrs" value="{{ @yrs }}"> {{ @yrs }}</label>
+                        </repeat>
                     </div>
+                    <check if="{{ isset(@errors['yrs'])}}">
+                        <span class="err">{{ @errors['yrs'] }}</span>
+                    </check>
+
                 </div>
                 <br>
-
                 <div class="row">
                     <label class="control-label">Willing to Relocate?</label>
                     <div class="d-flex justify-content-between">
