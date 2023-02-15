@@ -134,10 +134,10 @@ $f3->route('GET|POST /summary', function(){
 $f3->route('GET|POST /apply3', function ($f3){
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        $job = $_POST['job[]'];
-        if(isset($job)){
-            if(validSelectionsJobs($job)){
-                $_SESSION['job[]'] = $job;
+        $jchoice = $_POST['jchoice'];
+        if(isset($jchoice)){
+            if(validSelectionsJobs($jchoice)){
+                $_SESSION['jchoice'] = implode(", ", $jchoice);
             }
             else{
                 $f3->set('errors["job"]',
@@ -145,16 +145,16 @@ $f3->route('GET|POST /apply3', function ($f3){
             }
         }
 
-        $vertical = $_POST['vertical[]'];
-        if(isset($vertical)){
-            if(validSelectionsVerticals($vertical)){
-                $_SESSION['vertical[]'] = $vertical;
+        $vchoice = $_POST['vchoice'];
+        if(isset($vchoice)){
+//            if(validSelectionsVerticals($vchoice)){
+               $_SESSION['vchoice'] = implode(", ", $vchoice);
             }
-            else{
-                $f3->set('errors["vertical"]',
-                    'Vertical selection is invalid');
-            }
-        }
+//            else{
+//                $f3->set('errors["vertical"]',
+//                    'Vertical selection is invalid');
+//            }
+//        }
 
         if (empty($f3->get('errors'))) {
             $f3->reroute('summary');
