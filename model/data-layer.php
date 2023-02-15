@@ -10,3 +10,8 @@ function getJobs()
 {
     return array("JavaScript", "PHP", "Java", "Python", "HTML", "CSS", "ReactJS", "NodeJS");
 }
+
+function getVerticals()
+{
+    return array("SaaS", "Health tech", "Ag tech", "HR tech", "Industrial tech", "Cybersecurity");
+}

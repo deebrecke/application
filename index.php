@@ -37,13 +37,22 @@ $f3->route('GET|POST /apply1', function ($f3){
    //once the form is filled out, add to session array
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        $name = trim($_POST['name']);
-        if(validName($name)){
-            $_SESSION['name']= $name;
+        $fname = trim($_POST['fname']);
+        if(validName($fname)){
+            $_SESSION['fname']= $fname;
         }
         else{
             $f3->set('errors["name"]',
             'Please enter only alpha chars');
+        }
+
+        $lname = trim($_POST['lname']);
+        if(validName($lname)){
+            $_SESSION['lname']= $lname;
+        }
+        else{
+            $f3->set('errors["name"]',
+                'Please enter only alpha chars');
         }
 
         $email=trim($_POST['email']);
@@ -55,10 +64,16 @@ $f3->route('GET|POST /apply1', function ($f3){
                 'Please enter a valid email address');
         }
 
-
-
         $_SESSION['state'] = $_POST['state'];
-        $_SESSION['phone'] = $_POST['phone'];
+
+        $phone=$_POST['phone'];
+        if(validPhone($phone)){
+            $_SESSION['phone'] = $phone;
+        }
+        else{
+            $f3->set('errors["phone"]',
+                'Please enter a valid phone number');
+        }
 
         if (empty($f3->get('errors'))) {
             $f3->reroute('apply2');
@@ -74,6 +89,7 @@ $f3->route('GET|POST /apply2', function ($f3){
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $_SESSION['bio'] = $_POST['bio'];
+        $_SESSION['relo'] = $_POST['relo'];
 
         $github = $_POST['github'];
         if(validGithub($github)){
@@ -99,9 +115,6 @@ $f3->route('GET|POST /apply2', function ($f3){
         if (empty($f3->get('errors'))) {
             $f3->reroute('apply3');
         }
-
-        $_SESSION['relo'] = $_POST['relo'];
-
     }
 
     //Add experience to F3 hive
@@ -118,24 +131,36 @@ $f3->route('GET|POST /summary', function(){
 
 $f3->route('GET|POST /apply3', function ($f3){
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        //add in the check-boxes here
+
         $job = $_POST['job'];
-        if(validSelectionsJobs($job)){
-            $_SESSION['job'] = $job;
-        }
-        else{
-            $f3->set('errors["job"]',
-            'Job selection is invalid');
+        if(isset($job)){
+            if(validSelectionsJobs($job)){
+                $_SESSION['job'] = $job;
+            }
+            else{
+                $f3->set('errors["job"]',
+                    'Job selection is invalid');
+            }
         }
 
+        $vertical = $_POST['vertical'];
+        if(isset($vertical)){
+            if(validSelectionsVerticals($vertical)){
+                $_SESSION['vertical'] = $vertical;
+            }
+            else{
+                $f3->set('errors["vertical"]',
+                    'Vertical selection is invalid');
+            }
+        }
 
         if (empty($f3->get('errors'))) {
             $f3->reroute('summary');
         }
-
     }
 
     $f3->set('jobs', getJobs());
+    $f3->set('verticals', getVerticals());
     $view = new Template();
     echo $view->render('views/job-openings.html');
 });

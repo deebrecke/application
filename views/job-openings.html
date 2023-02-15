@@ -15,9 +15,9 @@ This is the last page of the form on which the user checks boxes to say what
 
         <div class="row">
             <label class="control-label"><b>Software Development Jobs</b></label>
-            <div class="d-flex justify-content-between">
+            <div class="row d-flex justify-content-between">
                 <repeat group="{{ @jobs }}" value="{{ @job }}">
-                    <label><input type="checkbox" name="job" value="{{ @job }}"> {{ @job }}</label>
+                    <label class="col-3"><input type="checkbox" name="job" value="{{ @job }}"> {{ @job }}</label>
                 </repeat>
             </div>
             <check if="{{ isset(@errors['job'])}}">
@@ -25,37 +25,20 @@ This is the last page of the form on which the user checks boxes to say what
             </check>
         </div>
 
-        <b>Industry Verticals</b><br>
+
         <div class="row">
-            <div class="col-3">
-                <input type="checkbox" id="saas" name="jobs[]" value="SaaS">
-                <label for="saas">SaaS</label>
+            <label class="control-label"><b>Industry Verticals</b><br></label>
+            <div class="row d-flex justify-content-left">
+                <repeat group="{{ @verticals }}" value="{{ @vertical }}">
+                    <label class="col-3"><input type="checkbox" name="vertical" value="{{ @vertical }}"> {{ @vertical }}</label>
+                </repeat>
             </div>
-            <div class="col-3">
-                <input type="checkbox" id="healthtech" name="jobs[]" value="Health tech">
-                <label for="healthtech">Health tech</label>
-            </div>
-            <div class="col-3">
-                <input type="checkbox" id="agtech" name="jobs[]" value="Ag tech">
-                <label for="agtech">Ag tech</label>
-            </div>
-            <div class="col-3">
-                <input type="checkbox" id="hrtech" name="jobs[]" value="HR tech">
-                <label for="hrtech">HR tech</label>
-            </div><br>
+
+            <check if="{{ isset(@errors['vertical'])}}">
+                <span class="err">{{ @errors['vertical'] }}</span>
+            </check>
         </div>
-        <div class="row">
-            <div class="col-3">
-                <input type="checkbox" id="indtech" name="jobs[]" value="Industrial tech">
-                <label for="indtech">Industrial tech</label>
-            </div>
-            <div class="col-3">
-                <input type="checkbox" id="cybersecurity" name="jobs[]" value="Cybersecurity">
-                <label for="cybersecurity">Cybersecurity</label>
-            </div>
-            <div class="col-6">
-            </div>
-        </div>
+
         <br>
 
         <div class="row">

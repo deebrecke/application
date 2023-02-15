@@ -12,7 +12,7 @@ function validExperience($experience){
 }
 
 function validPhone($phone){
-    return true;
+    return preg_match('/^[0-9]{10}+$/', $phone);
 }
 
 function validEmail($email){
@@ -24,7 +24,7 @@ function validSelectionsJobs($jobs){
 }
 
 function validSelectionsVerticals($verticals){
-    return true;
+    return in_array($verticals, getVerticals());
 }
 
 //required fields: “First Name”, “Last Name”, “Email”, “Phone”, “Github Link”, and “Years Experience”

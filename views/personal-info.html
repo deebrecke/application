@@ -18,11 +18,11 @@ This is the first page of the application. The user enters basic contact info he
                     <div class="row" id="namefields">
                         <div class="col-6">
                             <label for="fname" class="control-label">First Name</label>
-                            <input type="text" class="form-control" id="fname" name="name">
+                            <input type="text" class="form-control" id="fname" name="fname">
                         </div>
                         <div class="col-6">
                             <label for="lName" class="control-label">Last Name</label>
-                            <input type="text" class="form-control" id="lName" name="name">
+                            <input type="text" class="form-control" id="lName" name="lname">
                         </div>
 
                         <check if="{{ isset(@errors['name'])}}">
@@ -109,9 +109,12 @@ This is the first page of the application. The user enters basic contact info he
                 </select>
             </div>
             <div class="col-4">
-                <label for="phone" class="form-label">Phone</label>
+                <label for="phone" class="form-label">Phone (9 digits, no spaces or punctuation please) </label>
                 <input type="text" class="form-control" id="phone" name="phone">
             </div>
+            <check if="{{ isset(@errors['phone'])}}">
+                <span class="err">{{ @errors['phone'] }}</span>
+            </check>
             <div class="col-4 d-flex align-items-end">
                 <button class="btn btn-primary w-100" type="submit"> Next ></button>
             </div>
