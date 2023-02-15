@@ -64,6 +64,7 @@ $f3->route('GET|POST /apply1', function ($f3){
                 'Please enter a valid email address');
         }
 
+
         $_SESSION['state'] = $_POST['state'];
 
         $phone=$_POST['phone'];
@@ -80,6 +81,7 @@ $f3->route('GET|POST /apply1', function ($f3){
         }
     }
     //first rendering of the page
+    $f3->set('states', getStates());
     $view = new Template();
     echo $view->render('views/personal-info.html');
 });
@@ -132,10 +134,10 @@ $f3->route('GET|POST /summary', function(){
 $f3->route('GET|POST /apply3', function ($f3){
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        $job = $_POST['job'];
+        $job = $_POST['job[]'];
         if(isset($job)){
             if(validSelectionsJobs($job)){
-                $_SESSION['job'] = $job;
+                $_SESSION['job[]'] = $job;
             }
             else{
                 $f3->set('errors["job"]',
@@ -143,10 +145,10 @@ $f3->route('GET|POST /apply3', function ($f3){
             }
         }
 
-        $vertical = $_POST['vertical'];
+        $vertical = $_POST['vertical[]'];
         if(isset($vertical)){
             if(validSelectionsVerticals($vertical)){
-                $_SESSION['vertical'] = $vertical;
+                $_SESSION['vertical[]'] = $vertical;
             }
             else{
                 $f3->set('errors["vertical"]',

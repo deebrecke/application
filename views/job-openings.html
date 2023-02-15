@@ -17,7 +17,7 @@ This is the last page of the form on which the user checks boxes to say what
             <label class="control-label"><b>Software Development Jobs</b></label>
             <div class="row d-flex justify-content-between">
                 <repeat group="{{ @jobs }}" value="{{ @job }}">
-                    <label class="col-3"><input type="checkbox" name="job" value="{{ @job }}"> {{ @job }}</label>
+                    <label class="col-3"><input type="checkbox" name="job[]"> {{ @job }}</label>
                 </repeat>
             </div>
             <check if="{{ isset(@errors['job'])}}">
@@ -30,7 +30,7 @@ This is the last page of the form on which the user checks boxes to say what
             <label class="control-label"><b>Industry Verticals</b><br></label>
             <div class="row d-flex justify-content-left">
                 <repeat group="{{ @verticals }}" value="{{ @vertical }}">
-                    <label class="col-3"><input type="checkbox" name="vertical" value="{{ @vertical }}"> {{ @vertical }}</label>
+                    <label class="col-3"><input type="checkbox" name="vertical[]" value="{{ @vertical }}"> {{ @vertical }}</label>
                 </repeat>
             </div>
 
