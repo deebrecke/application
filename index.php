@@ -91,7 +91,7 @@ $f3->route('GET|POST /apply2', function ($f3){
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $_SESSION['bio'] = $_POST['bio'];
-        $_SESSION['relo'] = $_POST['relo'];
+        $_SESSION['rchoice'] = $_POST['rchoice'];
 
         $github = $_POST['github'];
         if(validGithub($github)){
@@ -105,7 +105,7 @@ $f3->route('GET|POST /apply2', function ($f3){
         //Validate the experience
         $yrs = $_POST['yrs'];
         if (validExperience($yrs)) {
-            $_SESSION['experience'] = $yrs;
+            $_SESSION['yrs'] = $yrs;
         }
         else {
             $f3->set('errors["yrs"]',
@@ -121,6 +121,7 @@ $f3->route('GET|POST /apply2', function ($f3){
 
     //Add experience to F3 hive
     $f3->set('experience', getExperience());
+    $f3->set('relo', getRelo());
 
     $view = new Template();
     echo $view->render('views/experience.html');

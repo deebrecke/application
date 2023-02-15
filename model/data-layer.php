@@ -5,6 +5,11 @@ function getExperience()
     return array("0-2", "2-4", "4+");
 }
 
+function getRelo()
+{
+    return array("Yes", "No", "Maybe");
+}
+
 function getJobs()
 {
     return array("JavaScript", "PHP", "Java", "Python", "HTML", "CSS", "ReactJS", "NodeJS");

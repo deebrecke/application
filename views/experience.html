@@ -32,7 +32,7 @@ This page is where the user writes all about themselves. It also gathers informa
                     <label class="control-label">Years Experience</label>
                     <div class="d-flex justify-content-between">
                         <repeat group="{{ @experience }}" value="{{ @yrs }}">
-                            <label><input type="radio" name="yrs" value="{{ @yrs }}"> {{ @yrs }}</label>
+                            <label><input type="radio" name="yrs" value="{{ @yrs }}">{{ @yrs }}</label>
                         </repeat>
                     </div>
                     <check if="{{ isset(@errors['yrs'])}}">
@@ -44,9 +44,9 @@ This page is where the user writes all about themselves. It also gathers informa
                 <div class="row">
                     <label class="control-label">Willing to Relocate?</label>
                     <div class="d-flex justify-content-between">
-                        <label><input type="radio" name="relo" value="Yes"> Yes </label>
-                        <label><input type="radio" name="relo" value="No"> No </label>
-                        <label><input type="radio" name="relo" value="Maybe"> Maybe </label>
+                        <repeat group="{{ @relo }}" value="{{ @rchoice}}">
+                            <label><input type="radio" name="rchoice" value="{{@rchoice}}">{{@rchoice}}</label>
+                        </repeat>
                     </div>
                 </div>
                 <br>
