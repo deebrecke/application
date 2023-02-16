@@ -137,13 +137,15 @@ $f3->route('GET|POST /apply3', function ($f3){
 
         $jchoice = $_POST['jchoice'];
         if(isset($jchoice)){
- //           if(validSelectionsJobs($jchoice)){
+            if(validSelectionsJobs($jchoice)){
                 $_SESSION['jchoice'] = implode(", ", $jchoice);
-//            }
-//            else{
-//                $f3->set('errors["job"]',
-//                    'Job selection is invalid');
-//            }
+            }
+            else{
+                $f3->set('errors["job"]',
+                    'Job selection is invalid');
+            }
+        }else{
+            $_SESSION['jchoice'] = $_POST['jchoice'];
         }
 
         $vchoice = $_POST['vchoice'];
@@ -155,6 +157,8 @@ $f3->route('GET|POST /apply3', function ($f3){
                 $f3->set('errors["vertical"]',
                     'Vertical selection is invalid');
             }
+        }else{
+            $_SESSION['vchoice'] = $vchoice;
         }
 
         if (empty($f3->get('errors'))) {
