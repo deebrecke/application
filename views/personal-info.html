@@ -29,19 +29,45 @@ This is the first page of the application. The user enters basic contact info he
                             <span class="err">{{ @errors['name'] }}</span>
                         </check>
                     </div>
-                </div>
 
-                <div class="row" id="emailfield">
-                    <div class="col-12">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email">
+                    <div class="row" id="emailfield">
+                        <div class="col-12">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email">
+                        </div>
+                        <check if="{{ isset(@errors['email'])}}">
+                            <span class="err">{{ @errors['email'] }}</span>
+                        </check>
                     </div>
-                    <check if="{{ isset(@errors['email'])}}">
-                        <span class="err">{{ @errors['email'] }}</span>
-                    </check>
+                    <div class="row">
+                        <div class="col-6">
+                            <!--Dropdown menu for all 50 states defaulting to WA-->
+                            <label for="state" class="form-label">State</label>
+                            <select class="form-control" id="state" name="state">
+                                <option value="Washington" selected>Washington</option>
+                                <repeat group="{{@states}}" value="{{@state}}">
+                                    <option value="{{@state}}">{{@state}}</option>
+                                </repeat>
+                            </select>
+                        </div>
+
+                        <div class="col-6">
+                            <label for="phone" class="form-label">Phone (9 digits, no spaces or punctuation please) </label>
+                            <input type="text" class="form-control" id="phone" name="phone">
+                            <check if="{{ isset(@errors['phone'])}}">
+                                <span class="err">{{ @errors['phone'] }}</span>
+                            </check>
+                        </div>
+                    </div>
                 </div>
             </div>
+
             <div class="col-4" >
+                <div class="row">
+                    <div class="col-12">
+                        <label></label>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-12 border" id="privacy-policy">
                         <label></label>
@@ -49,31 +75,20 @@ This is the first page of the application. The user enters basic contact info he
                             Profile information can be viewed by others with your permission.</p>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="row" id="row2">
-            <div class="col-4">
-                <!--Dropdown menu for all 50 states defaulting to WA-->
-                <label for="state" class="form-label">State</label>
-                <select class="form-control" id="state" name="state">
-                    <option value="Washington" selected>Washington</option>
-                    <repeat group="{{@states}}" value="{{@state}}">
-                        <option value="{{@state}}">{{@state}}</option>
-                    </repeat>
-                </select>
+                <div class="row">
+                    <div class="col-12">
+                        <label></label>
+
+                    </div>
+                </div>
+
+                <div class="row" id="row2">
+                    <div class="col-12 d-flex align-items-end">
+                        <button class="btn btn-primary w-100" type="submit"> Next ></button>
+                    </div>
+                </div>
             </div>
 
-            <div class="col-4">
-                <label for="phone" class="form-label">Phone (9 digits, no spaces or punctuation please) </label>
-                <input type="text" class="form-control" id="phone" name="phone">
-                <check if="{{ isset(@errors['phone'])}}">
-                    <span class="err">{{ @errors['phone'] }}</span>
-                </check>
-            </div>
-
-            <div class="col-4 d-flex align-items-end">
-                <button class="btn btn-primary w-100" type="submit"> Next ></button>
-            </div>
         </div>
 
     </form>

@@ -148,14 +148,14 @@ $f3->route('GET|POST /apply3', function ($f3){
 
         $vchoice = $_POST['vchoice'];
         if(isset($vchoice)){
-//            if(validSelectionsVerticals($vchoice)){
+            if(validSelectionsVerticals($vchoice)){
                $_SESSION['vchoice'] = implode(", ", $vchoice);
             }
-//            else{
-//                $f3->set('errors["vertical"]',
-//                    'Vertical selection is invalid');
-//            }
-//        }
+            else{
+                $f3->set('errors["vertical"]',
+                    'Vertical selection is invalid');
+            }
+        }
 
         if (empty($f3->get('errors'))) {
             $f3->reroute('summary');
