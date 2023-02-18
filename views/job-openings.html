@@ -1,10 +1,14 @@
 <!--
 Dee Brecke
-2/2/2023
+2/18/2023
 328/application/views/job-openings.html
 This is the last page of the form on which the user checks boxes to say what
- types of jobs they are interested in. The "next" button on this page takes them
- to the summary page-->
+types of jobs they are interested in. The "next" button on this page takes them
+to the summary page. The checkboxes are pulled from an array in the data-layer and
+are validated to prevent spoofing. Label surrounds the whole input tag so that the
+labels are clickable-->
+
+<!-- -->
 <include href="views/head-tags.html"></include>
 <include href="views/header.html"></include>
 
@@ -16,7 +20,10 @@ This is the last page of the form on which the user checks boxes to say what
         <div class="row">
             <label class="control-label"><b>Software Development Jobs</b></label>
             <div class="row d-flex justify-content-between">
+                <!--jobs variable is set in index.php as the jobs array from the data-layer-->
+                <!--job variable is placeholder -->
                 <repeat group="{{ @jobs }}" value="{{ @job }}">
+                    <!--jchoice[] variable holds the data from the boxes that were checked-->
                     <label class="col-3"><input type="checkbox" name="jchoice[]" value="{{@job}}"> {{ @job }}</label>
                 </repeat>
             </div>
@@ -25,7 +32,6 @@ This is the last page of the form on which the user checks boxes to say what
             </check>
         </div>
 
-
         <div class="row">
             <label class="control-label"><b>Industry Verticals</b><br></label>
             <div class="row d-flex justify-content-left">
@@ -33,12 +39,10 @@ This is the last page of the form on which the user checks boxes to say what
                     <label class="col-3"><input type="checkbox" name="vchoice[]" value="{{ @vertical }}"> {{ @vertical }}</label>
                 </repeat>
             </div>
-
             <check if="{{ isset(@errors['vertical'])}}">
                 <span class="err">{{ @errors['vertical'] }}</span>
             </check>
         </div>
-
         <br>
 
         <div class="row">

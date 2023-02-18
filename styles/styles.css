@@ -1,6 +1,6 @@
 /*
 Dee Brecke
-2/2/2023
+2/18/2023
 328/application/styles/styles.css
 This file contains all of the styles for the application project
  */
@@ -56,7 +56,7 @@ the button
     background-color: lightgrey;
     border-radius: 10px;
 }
-
+/*have error messages print out red*/
 .err{
     color: red;
 }

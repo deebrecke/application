@@ -1,9 +1,11 @@
 <!--
 Dee Brecke
-2/2/2023
+2/18/2023
 328/application/views/experience.html
 This page is where the user writes all about themselves. It also gathers information on how many years
- experience they have and if they are willing to relocate. The "next" button takes them to the "job-openings" page-->
+experience they have and if they are willing to relocate. The "next" button takes them to the "job-openings" page
+The Github link field is required and must be a valid url, the Years Experience is also required and validated
+The radio buttons are now templates using repeat groups and arrays in the data-layer-->
 <include href="views/head-tags.html"></include>
 <include href="views/header.html"></include>
 
@@ -23,6 +25,7 @@ This page is where the user writes all about themselves. It also gathers informa
                     <label for="github" class="form-label">Github Link</label>
                     <input type="text" class="form-control" id="github" name="github">
                 </div>
+                <!--check the validation by making sure the errors[] is empty-->
                 <check if="{{ isset(@errors['github'])}}">
                     <span class="err">{{ @errors['github'] }}</span>
                 </check>
@@ -31,10 +34,12 @@ This page is where the user writes all about themselves. It also gathers informa
                 <div class="row">
                     <label class="control-label">Years Experience</label>
                     <div class="d-flex justify-content-between">
+                        <!--use repeat group to call array from data-layer-->
                         <repeat group="{{ @experience }}" value="{{ @yrs }}">
                             <label><input type="radio" name="yrs" value="{{ @yrs }}">{{ @yrs }}</label>
                         </repeat>
                     </div>
+                    <!--validation-->
                     <check if="{{ isset(@errors['yrs'])}}">
                         <span class="err">{{ @errors['yrs'] }}</span>
                     </check>

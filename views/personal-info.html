@@ -1,9 +1,10 @@
 <!--
 Dee Brecke
-2/2/2023
+2/18/2023
 328/application/views/personal-info.html
 This is the first page of the application. The user enters basic contact info here
- and hits the "next" button to go to the "experience" page-->
+ and hits the "next" button to go to the "experience" page. First name, last name,
+ email address and phone number are validated and required fields-->
 <include href="views/head-tags.html"></include>
 <include href="views/header.html"></include>
 
@@ -24,7 +25,7 @@ This is the first page of the application. The user enters basic contact info he
                             <label for="lName" class="control-label">Last Name</label>
                             <input type="text" class="form-control" id="lName" name="lname">
                         </div>
-
+                        <!--fname and lname are validated in controller as a single error "name"-->
                         <check if="{{ isset(@errors['name'])}}">
                             <span class="err">{{ @errors['name'] }}</span>
                         </check>
@@ -33,6 +34,7 @@ This is the first page of the application. The user enters basic contact info he
                     <div class="row" id="emailfield">
                         <div class="col-12">
                             <label for="email" class="form-label">Email</label>
+                            <!--type=email does some validation but I added another layer of validation-->
                             <input type="email" class="form-control" id="email" name="email">
                         </div>
                         <check if="{{ isset(@errors['email'])}}">
@@ -42,6 +44,7 @@ This is the first page of the application. The user enters basic contact info he
                     <div class="row">
                         <div class="col-6">
                             <!--Dropdown menu for all 50 states defaulting to WA-->
+                            <!--template instead of 50 lines of options-->
                             <label for="state" class="form-label">State</label>
                             <select class="form-control" id="state" name="state">
                                 <option value="Washington" selected>Washington</option>
@@ -52,6 +55,7 @@ This is the first page of the application. The user enters basic contact info he
                         </div>
 
                         <div class="col-6">
+                            <!--phone validation includes instructions for how to enter a valid phone number-->
                             <label for="phone" class="form-label">Phone (9 digits, no spaces or punctuation please) </label>
                             <input type="text" class="form-control" id="phone" name="phone">
                             <check if="{{ isset(@errors['phone'])}}">
