@@ -11,10 +11,11 @@ for the form.
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
+//Require the autoload file before session starts
+require_once("vendor/autoload.php");
 session_start();
 
-//Require the autoload file
-require_once("vendor/autoload.php");
+
 require_once('model/data-layer.php');
 require_once('model/validate.php');
 
