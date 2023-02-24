@@ -22,8 +22,8 @@ This is the first page of the application. The user enters basic contact info he
                             <input type="text" class="form-control" id="fname" name="fname">
                         </div>
                         <div class="col-6">
-                            <label for="lName" class="control-label">Last Name</label>
-                            <input type="text" class="form-control" id="lName" name="lname">
+                            <label for="lname" class="control-label">Last Name</label>
+                            <input type="text" class="form-control" id="lname" name="lname">
                         </div>
                         <!--fname and lname are validated in controller as a single error "name"-->
                         <check if="{{ isset(@errors['name'])}}">
@@ -41,6 +41,7 @@ This is the first page of the application. The user enters basic contact info he
                             <span class="err">{{ @errors['email'] }}</span>
                         </check>
                     </div>
+
                     <div class="row">
                         <div class="col-6">
                             <!--Dropdown menu for all 50 states defaulting to WA-->
@@ -79,20 +80,22 @@ This is the first page of the application. The user enters basic contact info he
                             Profile information can be viewed by others with your permission.</p>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-12">
-                        <label></label>
+            </div>
+        </div>
 
-                    </div>
-                </div>
+        <br>
+        <div class="row" id="row2">
+            <p>Mailing Lists</p>
+            <label class="col-4"><input type="checkbox" id="mailList" name="mailList" value="mailList">
+                Sign me up for job openings mailing lists!
+            </label>
 
-                <div class="row" id="row2">
-                    <div class="col-12 d-flex align-items-end">
-                        <button class="btn btn-primary w-100" type="submit"> Next ></button>
-                    </div>
-                </div>
+            <div class="col-4">
             </div>
 
+            <div class="col-4 d-flex align-items-end">
+                <button class="btn btn-primary w-100" type="submit"> Next ></button>
+            </div>
         </div>
 
     </form>
