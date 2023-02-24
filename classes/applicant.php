@@ -68,7 +68,7 @@ class Applicant
 
     public function setPhone($phone)
     {
-        $this->_fphone = $phone;
+        $this->_phone = $phone;
     }
 
 }

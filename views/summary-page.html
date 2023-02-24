@@ -11,13 +11,13 @@ Dee Brecke
 <div class="container">
     <div class="row">
         <div class="col-6">
-            <p>Name: {{@SESSION.fname}} {{@SESSION.lname}}</p>
+            <p>Name: {{@SESSION.newApplicant->getFName()}} {{@SESSION.newApplicant->getLName()}}</p>
             <hr>
-            <p>Email: {{@SESSION.email}}</p>
+            <p>Email: {{@SESSION.newApplicant->getEmail()}}</p>
             <hr>
-            <p>State: {{@SESSION.state}}</p>
+            <p>State: {{@SESSION.newApplicant->getState()}}</p>
             <hr>
-            <p>Phone: {{@SESSION.phone}}</p>
+            <p>Phone: {{@SESSION.newApplicant->getPhone()}}</p>
             <hr>
             <p>GitHub link: {{@SESSION.github}}</p>
             <hr>

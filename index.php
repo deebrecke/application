@@ -13,12 +13,13 @@ error_reporting(E_ALL);
 
 //Require the autoload file before session starts
 require_once("vendor/autoload.php");
+//start the session AFTER
 session_start();
 //var_dump($_SESSION);
 require_once('model/data-layer.php');
 require_once('model/validate.php');
 
-$myApplicant = new Applicant();
+//$myApplicant = new Applicant();
 //var_dump($myApplicant);
 //$myApplicant->setFName("Dee");
 //echo $myApplicant->getFName();
@@ -142,10 +143,9 @@ $f3->route('GET|POST /apply2', function ($f3){
     echo $view->render('views/experience.html');
 });
 
-$f3->route('GET|POST /summary', function(){
-    $view = new Template();
-    echo $view->render('views/summary-page.html');
-});
+//TODO: get back to this later, because if they want to be on the mailing list
+//they are a different type of object (child)
+//This is beyond the scope of what we have learned so far
 
 //job openings page
 $f3->route('GET|POST /apply3', function ($f3){
@@ -189,6 +189,12 @@ $f3->route('GET|POST /apply3', function ($f3){
     $f3->set('verticals', getVerticals());
     $view = new Template();
     echo $view->render('views/job-openings.html');
+});
+
+$f3->route('GET|POST /summary', function(){
+    $view = new Template();
+    echo $view->render('views/summary-page.html');
+    session_destroy();
 });
 //Run fat free
 $f3->run();
