@@ -16,7 +16,7 @@ require_once("vendor/autoload.php");
 //start the session AFTER
 session_start();
 //var_dump($_SESSION);
-require_once('model/data-layer.php');
+//require_once('model/data-layer.php');
 require_once('model/validate.php');
 
 //$myApplicant = new Applicant();
@@ -97,7 +97,7 @@ $f3->route('GET|POST /apply1', function ($f3){
         }
     }
     //first rendering of the page
-    $f3->set('states', getStates());
+    $f3->set('states', DataLayer::getStates());
     $view = new Template();
     echo $view->render('views/personal-info.html');
 });
@@ -136,8 +136,8 @@ $f3->route('GET|POST /apply2', function ($f3){
     }
 
     //Add radio button arrays from data-layer to F3 hive
-    $f3->set('experience', getExperience());
-    $f3->set('relo', getRelo());
+    $f3->set('experience', DataLayer::getExperience());
+    $f3->set('relo', DataLayer::getRelo());
 
     $view = new Template();
     echo $view->render('views/experience.html');
@@ -185,8 +185,8 @@ $f3->route('GET|POST /apply3', function ($f3){
     }
 
     //add checkboxes to f3 hive
-    $f3->set('jobs', getJobs());
-    $f3->set('verticals', getVerticals());
+    $f3->set('jobs', DataLayer::getJobs());
+    $f3->set('verticals', DataLayer::getVerticals());
     $view = new Template();
     echo $view->render('views/job-openings.html');
 });

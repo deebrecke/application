@@ -16,7 +16,7 @@ function validGithub($github){
 
 //make field manditory and check that it is a valid choice
 function validExperience($experience){
-    return in_array($experience, getExperience());
+    return in_array($experience, DataLayer::getExperience());
 }
 
 //check for valid phone number using regex
@@ -33,7 +33,7 @@ function validEmail($email){
 function validSelectionsJobs($jchoice)//pass in post[] (variable created in controller
 {
     {
-        $jarray = getJobs();//array to check against
+        $jarray = DataLayer::getJobs();//array to check against
         foreach($jchoice as $choice) {
             if(!in_array($choice, $jarray)) {//if selection is not in array
                 return false;
@@ -47,7 +47,7 @@ function validSelectionsJobs($jchoice)//pass in post[] (variable created in cont
 //check each selected verticals checkbox selection against a list of valid options
 function validSelectionsVerticals($vchoice)
 {
-    $varray = getVerticals();
+    $varray = DataLayer::getVerticals();
     foreach ($vchoice as $choice) {
         if (!in_array($choice, $varray)) {
             return false;
