@@ -17,7 +17,7 @@ require_once("vendor/autoload.php");
 session_start();
 //var_dump($_SESSION);
 //require_once('model/data-layer.php');
-require_once('model/validate.php');
+//require_once('model/validate.php');
 
 //$myApplicant = new Applicant();
 //var_dump($myApplicant);
@@ -50,7 +50,7 @@ $f3->route('GET|POST /apply1', function ($f3){
 
         //validate name--both invalid first and last names go into "name" error
         $fname = trim($_POST['fname']);
-        if(validName($fname)){
+        if(Validate::validName($fname)){
             $newApplicant->setFName($fname);
         }
         else{
@@ -59,7 +59,7 @@ $f3->route('GET|POST /apply1', function ($f3){
         }
 
         $lname = trim($_POST['lname']);
-        if(validName($lname)){
+        if(Validate::validName($lname)){
             $newApplicant->setLName($lname);
         }
         else{
@@ -69,7 +69,7 @@ $f3->route('GET|POST /apply1', function ($f3){
 
         //validate email
         $email=trim($_POST['email']);
-        if(validEmail($email)){
+        if(Validate::validEmail($email)){
             $newApplicant->setEmail($email);
         }
         else{
@@ -82,7 +82,7 @@ $f3->route('GET|POST /apply1', function ($f3){
 
         //validate phone number
         $phone=$_POST['phone'];
-        if(validPhone($phone)){
+        if(Validate::validPhone($phone)){
             $newApplicant->setPhone($phone);
         }
         else{
@@ -110,7 +110,7 @@ $f3->route('GET|POST /apply2', function ($f3){
         $_SESSION['rchoice'] = $_POST['rchoice'];
 
         $github = $_POST['github'];
-        if(validGithub($github)){
+        if(Validate::validGithub($github)){
             $_SESSION['github'] = $github;
         }
         else{
@@ -120,7 +120,7 @@ $f3->route('GET|POST /apply2', function ($f3){
 
         //Validate the experience
         $yrs = $_POST['yrs'];
-        if (validExperience($yrs)) {
+        if (Validate::validExperience($yrs)) {
             $_SESSION['yrs'] = $yrs;
         }
         else {
@@ -155,7 +155,7 @@ $f3->route('GET|POST /apply3', function ($f3){
         //check to see if any boxes have been selected
         if(isset($jchoice)){
             //if so, run validation
-            if(validSelectionsJobs($jchoice)){
+            if(Validate::validSelectionsJobs($jchoice)){
                 $_SESSION['jchoice'] = implode(", ", $jchoice);
             }
             else{
@@ -168,7 +168,7 @@ $f3->route('GET|POST /apply3', function ($f3){
 
         $vchoice = $_POST['vchoice'];
         if(isset($vchoice)){
-            if(validSelectionsVerticals($vchoice)){
+            if(Validate::validSelectionsVerticals($vchoice)){
                $_SESSION['vchoice'] = implode(", ", $vchoice);
             }
             else{
