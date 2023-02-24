@@ -14,11 +14,17 @@ error_reporting(E_ALL);
 //Require the autoload file before session starts
 require_once("vendor/autoload.php");
 session_start();
-
-
+//var_dump($_SESSION);
 require_once('model/data-layer.php');
 require_once('model/validate.php');
 
+$myApplicant = new Applicant();
+//var_dump($myApplicant);
+//$myApplicant->setFName("Dee");
+//echo $myApplicant->getFName();
+
+$myMailApp = new Applicant_SubscribedToList();
+//var_dump($myMailApp);
 //var_dump(getExperience()); this was written correctly
 
 //Create an instance of the Base class
@@ -38,10 +44,13 @@ $f3->route('GET|POST /apply1', function ($f3){
    //once the form is filled out, add to session array
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
+        //create object but don't put data inside it yet
+        $newApplicant = new Applicant();
+
         //validate name--both invalid first and last names go into "name" error
         $fname = trim($_POST['fname']);
         if(validName($fname)){
-            $_SESSION['fname']= $fname;
+            $newApplicant->setFName($fname);
         }
         else{
             $f3->set('errors["name"]',
@@ -50,7 +59,7 @@ $f3->route('GET|POST /apply1', function ($f3){
 
         $lname = trim($_POST['lname']);
         if(validName($lname)){
-            $_SESSION['lname']= $lname;
+            $newApplicant->setLName($lname);
         }
         else{
             $f3->set('errors["name"]',
@@ -60,19 +69,20 @@ $f3->route('GET|POST /apply1', function ($f3){
         //validate email
         $email=trim($_POST['email']);
         if(validEmail($email)){
-            $_SESSION['email'] = $email;
+            $newApplicant->setEmail($email);
         }
         else{
             $f3->set('errors["email"]',
                 'Please enter a valid email address');
         }
 
-        $_SESSION['state'] = $_POST['state'];
+        $state = $_POST['state'];
+        $newApplicant->setState($state);
 
         //validate phone number
         $phone=$_POST['phone'];
         if(validPhone($phone)){
-            $_SESSION['phone'] = $phone;
+            $newApplicant->setPhone($phone);
         }
         else{
             $f3->set('errors["phone"]',
@@ -81,6 +91,7 @@ $f3->route('GET|POST /apply1', function ($f3){
 
         //only reroute if valid (sticky)
         if (empty($f3->get('errors'))) {
+            $_SESSION['newApplicant']=$newApplicant;
             $f3->reroute('apply2');
         }
     }

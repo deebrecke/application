@@ -12,7 +12,7 @@ class Applicant
     private $_relocate;
     private $_bio;
 
-    public function __construct()
+    function __construct()
     {
         $this->_fname = "";
         $this->_lname = "";
