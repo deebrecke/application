@@ -27,7 +27,7 @@ Dee Brecke
             <hr>
             <!--putting data into array and using php on index page prints all boxes checked here
             do a check if thingy here-->
-            <p>Mailing lists: {{@SESSION.jchoice}}, {{@SESSION.vchoice}}</p>
+            <p>Mailing lists: {{@SESSION.newApplicant->getSelectionsJobs()}}, {{@SESSION.newApplicant->getSelectionsVerticals()}}</p>
 
         </div>
         <div class="col-6">

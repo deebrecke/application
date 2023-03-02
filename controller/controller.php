@@ -118,7 +118,6 @@ class Controller
                     }
 
                 }
-
         }
 
             //Add radio button arrays from data-layer to F3 hive
@@ -133,12 +132,14 @@ class Controller
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
+
             $jchoice = $_POST['jchoice'];
             //check to see if any boxes have been selected
             if(isset($jchoice)){
                 //if so, run validation
                 if(Validate::validSelectionsJobs($jchoice)){
-                    $_SESSION['jchoice'] = implode(", ", $jchoice);
+                    $jchoiceString = implode(", ", $_POST['jchoice'] );
+                    $_SESSION['newApplicant']->setSelectionsJobs($jchoiceString);
                 }
                 else{
                     $this->_f3->set('errors["job"]',
@@ -151,7 +152,8 @@ class Controller
             $vchoice = $_POST['vchoice'];
             if(isset($vchoice)){
                 if(Validate::validSelectionsVerticals($vchoice)){
-                    $_SESSION['vchoice'] = implode(", ", $vchoice);
+                    $vchoiceString = implode(", ", $_POST['vchoice']);
+                    $_SESSION['newApplicant']->setSelectionsVerticals($vchoiceString);
                 }
                 else{
                     $this->_f3->set('errors["vertical"]',
@@ -173,12 +175,8 @@ class Controller
         echo $view->render('views/job-openings.html');
     }
 
-//TODO: get back to this later, because if they want to be on the mailing list
-//they are a different type of object (child)
-//This is beyond the scope of what we have learned so far
     function summary()
     {
-        var_dump($_SESSION);
         $view = new Template();
         echo $view->render('views/summary-page.html');
         session_destroy();
