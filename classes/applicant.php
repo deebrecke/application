@@ -12,13 +12,17 @@ class Applicant
     private $_relocate;
     private $_bio;
 
-    function __construct()
+    function __construct($fname, $lname, $email, $phone, $state="WA")
     {
-        $this->_fname = "";
-        $this->_lname = "";
-        $this->_email = "";
-        $this->_state = "";
-        $this->_phone = "";
+        $this->_fname = $fname;
+        $this->_lname = $lname;
+        $this->_email = $email;
+        $this->_state = $state;
+        $this->_phone = $phone;
+        $this->_github = "";
+        $this->_experience = "";
+        $this->_relocate = "";
+        $this->_bio = "";
     }
 
     public function getFName()
@@ -71,4 +75,42 @@ class Applicant
         $this->_phone = $phone;
     }
 
+    public function getGithub()
+    {
+        return $this->_github;
+    }
+
+    public function setGithub($github)
+    {
+        $this->_github = $github;
+    }
+    public function getExperience()
+    {
+        return $this->_experience;
+    }
+
+    public function setExperience($experience)
+    {
+        $this->_experience = $experience;
+    }
+
+    public function getRelocate()
+    {
+        return $this->_relocate;
+    }
+
+    public function setRelocate($relocate)
+    {
+        $this->_relocate = $relocate;
+    }
+
+    public function getBio()
+    {
+        return $this->_bio;
+    }
+
+    public function setBio($bio)
+    {
+        $this->_bio = $bio;
+    }
 }

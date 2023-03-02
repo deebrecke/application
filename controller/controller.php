@@ -18,51 +18,55 @@ class Controller
     {
         //once the form is filled out, add to session array
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $mail = $_POST['mailList'];
+            if(isset($mail)){
+                $newApplicant = new Applicant_SubscribedToList();
+//if isset, applicant is this type else applicant is other type
+            }else {
+                //create object but don't put data inside it yet
+                $newApplicant = new Applicant("", "", "", "");
+            }
+                //validate name--both invalid first and last names go into "name" error
+                $fname = trim($_POST['fname']);
+                if(Validate::validName($fname)){
+                    $newApplicant->setFName($fname);
+                }
+                else{
+                    $this->_f3->set('errors["name"]',
+                        'Please enter only alpha chars');
+                }
 
-            //create object but don't put data inside it yet
-            $newApplicant = new Applicant();
+                $lname = trim($_POST['lname']);
+                if(Validate::validName($lname)){
+                    $newApplicant->setLName($lname);
+                }
+                else{
+                    $this->_f3->set('errors["name"]',
+                        'Please enter only alpha chars');
+                }
 
-            //validate name--both invalid first and last names go into "name" error
-            $fname = trim($_POST['fname']);
-            if(Validate::validName($fname)){
-                $newApplicant->setFName($fname);
-            }
-            else{
-                $this->_f3->set('errors["name"]',
-                    'Please enter only alpha chars');
-            }
+                //validate email
+                $email=trim($_POST['email']);
+                if(Validate::validEmail($email)){
+                    $newApplicant->setEmail($email);
+                }
+                else{
+                    $this->_f3->set('errors["email"]',
+                        'Please enter a valid email address');
+                }
 
-            $lname = trim($_POST['lname']);
-            if(Validate::validName($lname)){
-                $newApplicant->setLName($lname);
-            }
-            else{
-                $this->_f3->set('errors["name"]',
-                    'Please enter only alpha chars');
-            }
+                $state = $_POST['state'];
+                $newApplicant->setState($state);
 
-            //validate email
-            $email=trim($_POST['email']);
-            if(Validate::validEmail($email)){
-                $newApplicant->setEmail($email);
-            }
-            else{
-                $this->_f3->set('errors["email"]',
-                    'Please enter a valid email address');
-            }
-
-            $state = $_POST['state'];
-            $newApplicant->setState($state);
-
-            //validate phone number
-            $phone=$_POST['phone'];
-            if(Validate::validPhone($phone)){
-                $newApplicant->setPhone($phone);
-            }
-            else{
-                $this->_f3->set('errors["phone"]',
-                    'Please enter a valid phone number');
-            }
+                //validate phone number
+                $phone=$_POST['phone'];
+                if(Validate::validPhone($phone)){
+                    $newApplicant->setPhone($phone);
+                }
+                else{
+                    $this->_f3->set('errors["phone"]',
+                        'Please enter a valid phone number');
+                }
 
             //only reroute if valid (sticky)
             if (empty($this->_f3->get('errors'))) {
@@ -76,18 +80,21 @@ class Controller
         echo $view->render('views/personal-info.html');
     }
 
+
     function apply2()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            $_SESSION['bio'] = $_POST['bio'];
-            $_SESSION['rchoice'] = $_POST['rchoice'];
+            $relocate = $_POST['relocate'];
+            $_SESSION['newApplicant']->setRelocate($relocate);
+
+            $bio = $_POST['bio'];
+            $_SESSION['newApplicant']->setBio($bio);
 
             $github = $_POST['github'];
-            if(Validate::validGithub($github)){
-                $_SESSION['github'] = $github;
-            }
-            else{
+            if (Validate::validGithub($github)) {
+                $_SESSION['newApplicant']->setGithub($github);
+            } else {
                 $this->_f3->set('errors["github"]',
                     'Please enter a valid url');
             }
@@ -95,26 +102,31 @@ class Controller
             //Validate the experience
             $yrs = $_POST['yrs'];
             if (Validate::validExperience($yrs)) {
-                $_SESSION['yrs'] = $yrs;
-            }
-            else {
+                $_SESSION['newApplicant']->setExperience($yrs);
+            } else {
                 $this->_f3->set('errors["yrs"]',
                     'Experience is invalid');
             }
+                //Redirect to the next page
+                //if there are no errors
+                if (empty($this->_f3->get('errors'))) {
+                    //if applicant is mail type, go to apply3, else go to summary
+                    if($_SESSION['newApplicant'] instanceof Applicant_SubscribedToList){
+                       $this->_f3->reroute('apply3');
+                    }else{
+                        $this->_f3->reroute('summary');
+                    }
 
-            //Redirect to the next page
-            //if there are no errors
-            if (empty($this->_f3->get('errors'))) {
-                $this->_f3->reroute('apply3');
-            }
+                }
+
         }
 
-        //Add radio button arrays from data-layer to F3 hive
-        $this->_f3->set('experience', DataLayer::getExperience());
-        $this->_f3->set('relo', DataLayer::getRelo());
+            //Add radio button arrays from data-layer to F3 hive
+            $this->_f3->set('experience', DataLayer::getExperience());
+            $this->_f3->set('relo', DataLayer::getRelo());
 
-        $view = new Template();
-        echo $view->render('views/experience.html');
+            $view = new Template();
+            echo $view->render('views/experience.html');
     }
 
     function apply3()
@@ -166,6 +178,7 @@ class Controller
 //This is beyond the scope of what we have learned so far
     function summary()
     {
+        var_dump($_SESSION);
         $view = new Template();
         echo $view->render('views/summary-page.html');
         session_destroy();

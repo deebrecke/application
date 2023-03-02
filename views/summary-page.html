@@ -11,21 +11,22 @@ Dee Brecke
 <div class="container">
     <div class="row">
         <div class="col-6">
-            <p>Name: {{@SESSION.newApplicant->getFName()}} {{@SESSION.newApplicant->getLName()}}</p>
+            <p>Name: {{ @SESSION.newApplicant->getFName() }} {{ @SESSION.newApplicant->getLName() }} </p>
             <hr>
-            <p>Email: {{@SESSION.newApplicant->getEmail()}}</p>
+            <p>Email: {{ @SESSION.newApplicant->getEmail() }}</p>
             <hr>
             <p>State: {{@SESSION.newApplicant->getState()}}</p>
             <hr>
             <p>Phone: {{@SESSION.newApplicant->getPhone()}}</p>
             <hr>
-            <p>GitHub link: {{@SESSION.github}}</p>
+            <p>GitHub link: {{@SESSION.newApplicant->getGithub()}}</p>
             <hr>
-            <p>Experience: {{@SESSION.yrs}} years</p>
+            <p>Experience: {{@SESSION.newApplicant->getExperience()}} years</p>
             <hr>
-            <p>Willing to relocate? {{@SESSION.rchoice}}</p>
+            <p>Willing to relocate? {{@SESSION.newApplicant->getRelocate()}}</p>
             <hr>
-            <!--putting data into array and using php on index page prints all boxes checked here-->
+            <!--putting data into array and using php on index page prints all boxes checked here
+            do a check if thingy here-->
             <p>Mailing lists: {{@SESSION.jchoice}}, {{@SESSION.vchoice}}</p>
 
         </div>
@@ -39,7 +40,7 @@ Dee Brecke
         </div>
         <div class="col-6">
             <h3 id="summary-header">Summary</h3><br>
-            <p>{{@SESSION.bio}}</p>
+            <p>{{ @SESSION.newApplicant->GetBio() }}</p>
         </div>
     </div>
 

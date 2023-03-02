@@ -49,8 +49,8 @@ The radio buttons are now templates using repeat groups and arrays in the data-l
                 <div class="row">
                     <label class="control-label">Willing to Relocate?</label>
                     <div class="d-flex justify-content-between">
-                        <repeat group="{{ @relo }}" value="{{ @rchoice}}">
-                            <label><input type="radio" name="rchoice" value="{{@rchoice}}">{{@rchoice}}</label>
+                        <repeat group="{{ @relo }}" value="{{ @relocate}}">
+                            <label><input type="radio" name="relocate" value="{{@relocate}}">{{@relocate}}</label>
                         </repeat>
                     </div>
                 </div>

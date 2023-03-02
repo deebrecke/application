@@ -11,7 +11,7 @@ class Applicant_SubscribedToList extends Applicant
     //it later
     function __construct()
     {
-        parent::__construct();
+        parent::__construct($fname="?", $lname="?", $email="?", $phone="?", $state="WA");
         $this->_selectionsJobs = "";
         $this->_selectionsVerticals = "";
     }
