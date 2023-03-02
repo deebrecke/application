@@ -116,7 +116,6 @@ class Controller
                     }else{
                         $this->_f3->reroute('summary');
                     }
-
                 }
         }
 
@@ -132,12 +131,12 @@ class Controller
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-
             $jchoice = $_POST['jchoice'];
             //check to see if any boxes have been selected
             if(isset($jchoice)){
                 //if so, run validation
                 if(Validate::validSelectionsJobs($jchoice)){
+                    //add to object
                     $jchoiceString = implode(", ", $_POST['jchoice'] );
                     $_SESSION['newApplicant']->setSelectionsJobs($jchoiceString);
                 }

@@ -25,9 +25,11 @@ Dee Brecke
             <hr>
             <p>Willing to relocate? {{@SESSION.newApplicant->getRelocate()}}</p>
             <hr>
-            <!--putting data into array and using php on index page prints all boxes checked here
-            do a check if thingy here-->
-            <p>Mailing lists: {{@SESSION.newApplicant->getSelectionsJobs()}}, {{@SESSION.newApplicant->getSelectionsVerticals()}}</p>
+            <!--putting data into array and using php on index page prints all boxes checked here -->
+            <check if="{{ @SESSION['newApplicant'] instanceof Applicant_SubscribedToList }}">
+                <p>Mailing lists: {{@SESSION.newApplicant->getSelectionsJobs()}}, {{@SESSION.newApplicant->getSelectionsVerticals()}}</p>
+                <hr>
+            </check>
 
         </div>
         <div class="col-6">
