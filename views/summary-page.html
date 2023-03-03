@@ -1,9 +1,11 @@
 <!--
 Dee Brecke
- 2/18/2023
+ 3/3/2023
  328/application/views/summary-page.html
  This page displays all the information that was entered into the forms on the other pages
- All information uses f3 templates
+ All information uses f3 templates. Now it also checks to see which type of object is being
+ passed in, and if it's not the applicant that wants to subscribe to mailing lists, that
+ section is omitted in the display.
  -->
 <include href="views/head-tags.html"></include>
 <include href="views/header.html"></include>
@@ -27,7 +29,12 @@ Dee Brecke
             <hr>
             <!--putting data into array and using php on index page prints all boxes checked here -->
             <check if="{{ @SESSION['newApplicant'] instanceof Applicant_SubscribedToList }}">
-                <p>Mailing lists: {{@SESSION.newApplicant->getSelectionsJobs()}}, {{@SESSION.newApplicant->getSelectionsVerticals()}}</p>
+                <p>Mailing lists:
+                    <check if="{{@SESSION.newApplicant->getSelectionsJobs()}} !== []">
+                        {{@SESSION.newApplicant->getSelectionsJobs()}}</check>
+                    <check if="{{@SESSION.newApplicant->getSelectionsVerticals()}} !==[]">
+                        {{@SESSION.newApplicant->getSelectionsVerticals()}}</check>
+                </p>
                 <hr>
             </check>
 

@@ -1,19 +1,25 @@
 <?php
+
+/**
+ * Applicant Subscribed to lists (child) class
+ *
+ * Dee Brecke
+ * 3/3/2023
+ * 328/applicant/classes/applicant_subscribedtolists.php
+ * This class is the child of the Applicant class. If the applicant selects the
+ * box for mailing lists, this is the object that is created. It contains all of the
+ * fields that the parent Applicant class contains, plus two arrays for the checkboxes
+ */
 class Applicant_SubscribedToList extends Applicant
 {
     private $_selectionsJobs;
     private $_selectionsVerticals;
 
-    //we set condiments to a string instead of an array.
-    //The instructions say the fields here should be arrays. For now,
-    // I just went ahead and change to empty string instead of
-    // empty array to make it work and then I can go back and fix
-    //it later
     function __construct()
     {
         parent::__construct($fname="?", $lname="?", $email="?", $phone="?", $state="WA");
-        $this->_selectionsJobs = "";
-        $this->_selectionsVerticals = "";
+        $this->_selectionsJobs = [];
+        $this->_selectionsVerticals = [];
     }
 
     public function getSelectionsJobs()

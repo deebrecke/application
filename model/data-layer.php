@@ -1,8 +1,14 @@
 <?php
-//Dee Brecke
-//2/18/23
-//328/application/model/data-layer.php
-//This file holds the data arrays used in the templates
+
+/**
+ * Data Layer class
+ *
+ * Dee Brecke
+ * 3/3/2023
+ * 328/application/model/data-layer.php
+ * This class holds the data arrays used in the templates
+ */
+
 class DataLayer
 {
     //array for experience radio buttons

@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * Applicant (Parent) class
+ *
+ * Dee Brecke
+ * 328/application/classes/applicant.php
+ * 3/2/2023
+ * This class is the parent class for applicants. It contains all of the
+ * personal data, but not any mailing lists. It has 5 required fields with the
+ * state field being defaulted to WA
+ */
 class Applicant
 {
     private $_fname;
@@ -12,6 +22,14 @@ class Applicant
     private $_relocate;
     private $_bio;
 
+    /**
+     * parameterized constructor
+     * @param $fname applicant's first name
+     * @param $lname applicant's last name
+     * @param $email applicant's email address
+     * @param $phone applicant's phone number
+     * @param $state State where applicant lives
+     */
     function __construct($fname, $lname, $email, $phone, $state="WA")
     {
         $this->_fname = $fname;
@@ -25,6 +43,7 @@ class Applicant
         $this->_bio = "";
     }
 
+    //getters and setters for each field:
     public function getFName()
     {
         return $this->_fname;
