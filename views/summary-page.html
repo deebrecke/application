@@ -31,7 +31,7 @@ Dee Brecke
             <check if="{{ @SESSION['newApplicant'] instanceof Applicant_SubscribedToList }}">
                 <p>Mailing lists:
                     <check if="{{@SESSION.newApplicant->getSelectionsJobs()}} !== []">
-                        {{@SESSION.newApplicant->getSelectionsJobs()}}</check>
+                        {{@SESSION.newApplicant->getSelectionsJobs()}},</check>
                     <check if="{{@SESSION.newApplicant->getSelectionsVerticals()}} !==[]">
                         {{@SESSION.newApplicant->getSelectionsVerticals()}}</check>
                 </p>
