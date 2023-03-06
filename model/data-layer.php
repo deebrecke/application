@@ -55,9 +55,9 @@ class DataLayer
 //same a s save order in diner
     function insertApplicant($appObj)
     {
-        var_dump($appObj);
         //1. define query
-        $sql = "INSERT INTO applicant (fname, lname, email, phone, state) VALUES (:fname, :lname, :email, :phone, :state)";
+        $sql = "INSERT INTO applicant (fname, lname, email, phone, state, github, experience, relocate,bio) 
+            VALUES (:fname, :lname, :email, :phone, :state, :github, :experience, :relocate, :bio)";
 
         //2. prepare statement (always the same)
         $statement = $this->_dbh->prepare($sql);
@@ -68,11 +68,20 @@ class DataLayer
         $email = $appObj->getEmail();
         $phone = $appObj->getPhone();
         $state = $appObj->getState();
+        $github = $appObj->getGithub();
+        $experience = $appObj->getExperience();
+        $relocate = $appObj->getRelocate();
+        $bio = $appObj->getBio();
+
         $statement->bindParam(':fname', $fname);
         $statement->bindParam(':lname', $lname);
         $statement->bindParam(':email', $email);
         $statement->bindParam(':phone', $phone);
         $statement->bindParam(':state', $state);
+        $statement->bindParam(':github', $github);
+        $statement->bindParam(':experience', $experience);
+        $statement->bindParam(':relocate', $relocate);
+        $statement->bindParam(':bio', $bio);
 
         //4. execute query (always the same)
         $statement->execute();
