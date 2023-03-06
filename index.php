@@ -21,11 +21,19 @@ require_once "vendor/autoload.php";
 //start the session AFTER
 session_start();
 
+//require ('/home/deedeegr/config.php');
+
+
+//$testApplicant = new Applicant('test', 'person', 'me@email.com', '123456789');
+//$id = $dataLayer->insertApplicant($testApplicant);
+//echo "$id inserted succesfully!";
+
 //Create an instance of the Base class
 $f3 = Base::instance();
 
-//Instantiate a controller object
+//Instantiate a controller and data layer object
 $con = new Controller($f3);
+$dataLayer = new DataLayer();
 
 //Define a default route ("home page" for application)
 $f3->route('GET /', function()

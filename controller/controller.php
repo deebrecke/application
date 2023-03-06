@@ -209,8 +209,10 @@ class Controller
      */
     function summary()
     {
+        //var_dump($_SESSION);
+        $id = $GLOBALS['dataLayer']->insertApplicant($_SESSION['newApplicant']);
         $view = new Template();
         echo $view->render('views/summary-page.html');
-        session_destroy();
+        //session_destroy();
     }
 }
