@@ -63,6 +63,11 @@ $f3->route('GET|POST /summary', function()
 {
     $GLOBALS['con']->summary();
 });
+
+$f3->route('GET|POST /adminPage', function()
+{
+    $GLOBALS['con']->adminPage();
+});
 //Run fat free
 $f3->run();
 

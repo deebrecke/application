@@ -1,0 +1,54 @@
+<include href="views/head-tags.html"></include>
+<include href="views/header.html"></include>
+<h1>This is the admin page</h1>
+<div id="allApplicants">
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>State</th>
+        <th>Phone</th>
+        <th>Github</th>
+        <th>Experience</th>
+        <th>Relocate?</th>
+        <th>Bio</th>
+        <th>Mailing List Sign Up?</th>
+        <th>Mailing List Subscriptions</th>
+        <th>Image</th>
+    </tr>
+    <repeat group="{{@allApplicants}}" value="{{@applicant}}">
+        <tr>
+            <td>{{@applicant['fname']}} {{@applicant['lname']}}</td>
+            <td>{{@applicant['email']}}</td>
+            <td>{{@applicant['state']}}</td>
+            <td>{{@applicant['phone']}}</td>
+            <td>{{@applicant['github']}}</td>
+            <td>{{@applicant['experience']}}</td>
+            <td>{{@applicant['relocate']}}</td>
+            <td>{{@applicant['bio']}}</td>
+            <td>{{@applicant['mailing_lists_signup']}}</td>
+            <td>{{@applicant['mailing_list_subscriptions']}}</td>
+            <td>{{@applicant['image']}}</td>
+        </tr>
+    </repeat>
+</table>
+</div>
+<!--
+<div class="container">
+    <h1>Admin Page</h1>
+    <repeat group="{{ @orders }}" value="{{ @order }}">
+        <p>OrderID: {{ @order['orderId'] }}<br>
+           Food: {{ @order['food'] }}<br>
+           Meal: {{ @order['meal'] }}<br>
+           Condiments: {{ @order['conds'] }}<br>
+        </p>
+    </repeat>
+</div>
+
+<ul>
+    <repeat group="{{@applicants}}" value="{{@applicant}}">
+        <li>{{@applicant['email']}}</li>
+    </repeat>
+</ul>
+-->
+

@@ -209,10 +209,24 @@ class Controller
      */
     function summary()
     {
-        //var_dump($_SESSION);
+        var_dump($_SESSION);
         $id = $GLOBALS['dataLayer']->insertApplicant($_SESSION['newApplicant']);
         $view = new Template();
         echo $view->render('views/summary-page.html');
-        session_destroy();
+        //session_destroy();
+    }
+
+    function submit()
+    {
+        //here is where I want to call the database interaction when they hit the submit button
+    }
+
+    function adminPage()
+    {
+        $allApplicants = $GLOBALS['dataLayer']->getApplicants();
+        $this->_f3->set('allApplicants', $allApplicants);
+
+        $view = new Template();
+        echo $view->render('views/admin.html');
     }
 }

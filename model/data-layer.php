@@ -92,7 +92,13 @@ class DataLayer
         echo $id;
     }
 
-    function getApplicants(){
+    function getApplicants()
+    {
+        //run sql select * function here
+        $sql = "SELECT * FROM applicant";
+        $statement = $this->_dbh->prepare($sql);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
 
     }
 
@@ -104,3 +110,16 @@ class DataLayer
 
     }
 }//end of class
+
+////5. Process Result
+//$result = $statement->fetchAll(PDO::FETCH_ASSOC);
+//foreach ($result as $row) {
+////    echo "<p>".$row['id'].", ".$row['name'].", ".$row['type'].", ".$row['color']."</p>";
+//// echo "<p>{$row['id']}, {$row['name']}, {$row['type']}, {$row['color']}</p>";
+//
+//    $id = $row['id'];
+//    $name = $row['name'];
+//    $color = $row['color'];
+//    $type = $row['type'];
+//
+//    echo "<p>$id, $name, $color, $type";
