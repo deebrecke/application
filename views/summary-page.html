@@ -5,7 +5,8 @@ Dee Brecke
  This page displays all the information that was entered into the forms on the other pages
  All information uses f3 templates. Now it also checks to see which type of object is being
  passed in, and if it's not the applicant that wants to subscribe to mailing lists, that
- section is omitted in the display.
+ section is omitted in the display. When the submit button is clicked, all data is inserted
+ into the database.
  -->
 <include href="views/head-tags.html"></include>
 <include href="views/header.html"></include>
@@ -57,7 +58,8 @@ Dee Brecke
        <div class="col-3">
        </div>
        <div class="col-6 d-flex align-items-end">
-           <button class="btn btn-primary w-100" type="submit"> Submit My Application!</button>
+           <a href="submit" role="button"
+              class="btn btn-primary"> Submit My Application!</a>
        </div>
        <div class="col-3"></div>
    </div>
