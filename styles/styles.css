@@ -5,62 +5,80 @@ Dee Brecke
 328/application/styles/styles.css
 This file contains all of the styles for the application project
  */
-.corpname{
-    font-family: "Comic Sans MS", serif;
-    text-decoration: none;
-}
-body{
-background-color: azure;
-}
-/*round corners on photo*/
-#feather{
-    border-radius: 20px;
-}
-#sirzigs{
-    border-radius: 20px;
-}
-/*round corners on button*/
-.btn-primary{
-    border-radius:10px;
-    background-color: black;
-}
-/*Headings for main content centered*/
-h3{
-    text-align: center;
-}
-/*Heading for Summary not centered*/
-#summary-header{
-    text-align: left;
-}
+
 /*center the button at bottom of page
 apparently this only centers the text within
 the button
 */
+#adminheader{
+    text-align: center;
+}
 #apply{
     text-align: center;
+}
+body{
+background-color: azure;
+}
+.break-all{
+    word-break: break-all;
+}
+.break-word{
+    word-break: break-word;
+}
+
+/*round corners on button*/
+.btn-primary{
+    border-radius:10px;
+    background-color: black;
 }
 /*THIS centers the button in the div*/
 .buttonDiv{
     display: flex;
     justify-content: center;
 }
-/*Indent quote section on home page*/
-.quotes{
-    padding-left: 2rem;
-    padding-right: 2rem;
-}
 .content{
     padding-right: 2rem;
     padding-left: 2rem;
+}
+.corpname{
+    font-family: "Comic Sans MS", serif;
+    text-decoration: none;
+}
+
+/*have error messages print out red*/
+.err{
+    color: red;
+}
+/*round corners on photo*/
+#feather{
+    border-radius: 20px;
+}
+
+/*Headings for main content centered*/
+h3{
+    text-align: center;
 }
 #privacy-policy{
     background-color: lightgrey;
     border-radius: 10px;
 }
-/*have error messages print out red*/
-.err{
-    color: red;
+/*Indent quote section on home page*/
+.quotes{
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
-#allApplicants{
-    color: red;
+#sirzigs{
+    border-radius: 20px;
+}
+
+/*Heading for Summary not centered*/
+#summary-header{
+    text-align: left;
+}
+
+table, th, td {
+    border: 2px solid black;
+}
+th {
+    text-align: center;
 }

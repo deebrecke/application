@@ -8,7 +8,8 @@
  * 3/2/2023
  * This class is the parent class for applicants. It contains all of the
  * personal data, but not any mailing lists. It has 5 required fields with the
- * state field being defaulted to WA
+ * state field being defaulted to WA. Mailing lists is defaulted to 0, which will be
+ * changed to 1 if the applicant checks the mailing lists box.
  */
 class Applicant
 {
@@ -21,6 +22,7 @@ class Applicant
     private $_experience;
     private $_relocate;
     private $_bio;
+    private $_mailingLists;
 
     /**
      * parameterized constructor
@@ -30,7 +32,7 @@ class Applicant
      * @param $phone applicant's phone number
      * @param $state State where applicant lives
      */
-    function __construct($fname, $lname, $email, $phone, $state="WA")
+    function __construct($fname, $lname, $email, $phone, $mailingLists, $state="WA")
     {
         $this->_fname = $fname;
         $this->_lname = $lname;
@@ -41,6 +43,7 @@ class Applicant
         $this->_experience = "";
         $this->_relocate = "";
         $this->_bio = "";
+        $this->_mailingLists = 0;
     }
 
     //getters and setters for each field:
@@ -132,4 +135,9 @@ class Applicant
     {
         $this->_bio = $bio;
     }
+    public function getMailingListChoice()
+    {
+        return $this->_mailingLists;
+    }
+
 }

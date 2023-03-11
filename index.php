@@ -18,15 +18,9 @@ error_reporting(E_ALL);
 
 //Require the autoload file before session starts
 require_once "vendor/autoload.php";
+
 //start the session AFTER
 session_start();
-
-//require ('/home/deedeegr/config.php');
-
-
-//$testApplicant = new Applicant('test', 'person', 'me@email.com', '123456789');
-//$id = $dataLayer->insertApplicant($testApplicant);
-//echo "$id inserted succesfully!";
 
 //Create an instance of the Base class
 $f3 = Base::instance();
@@ -64,10 +58,16 @@ $f3->route('GET|POST /summary', function()
     $GLOBALS['con']->summary();
 });
 
+$f3->route('GET|POST /submit', function()
+{
+    $GLOBALS['con']->submit();
+});
+
 $f3->route('GET|POST /adminPage', function()
 {
     $GLOBALS['con']->adminPage();
 });
+
 //Run fat free
 $f3->run();
 

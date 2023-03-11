@@ -18,7 +18,10 @@ class Controller
         $this->_f3 = $f3;
     }
 
-    //default route
+    /**
+     * default route which renders the home page for the website
+     * @return void
+     */
     function home()
     {
         $view = new Template();
@@ -43,7 +46,7 @@ class Controller
             //if isset, applicant is this type else applicant is other type
             } else {
                 //create object but don't put data inside it yet
-                $newApplicant = new Applicant("", "", "", "");
+                $newApplicant = new Applicant("", "", "", "", 0);
             }
                 //validate name--both invalid first and last names go into "name" error
                 $fname = trim($_POST['fname']);
@@ -204,23 +207,40 @@ class Controller
     }
 
     /**
-     * Summary page displays the summary and ends the session
+     * Summary page displays the summary and contains a submit
+     * button that the user can click after reviewing their info
      * @return void
      */
     function summary()
     {
-        var_dump($_SESSION);
-        $id = $GLOBALS['dataLayer']->insertApplicant($_SESSION['newApplicant']);
+        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $this->_f3->reroute('submit');
+        }
         $view = new Template();
         echo $view->render('views/summary-page.html');
         //session_destroy();
     }
 
+    /**
+     * This function is called when the applicant clicks the submit button
+     * This is where the data is put into the database after the applicant
+     * confirms their information. It routes the user to the "Thank You" page
+     * called submitted.html
+     * @return void
+     */
     function submit()
     {
-        //here is where I want to call the database interaction when they hit the submit button
+        $id = $GLOBALS['dataLayer']->insertApplicant($_SESSION['newApplicant']);
+        $view = new Template();
+        echo $view->render('views/submitted.html');
     }
 
+    /**
+     * This function is called when the admin login link is clicked
+     * It renders the admin.html page and calls teh getApplicants() method
+     * which shows a table of all applicants
+     * @return void
+     */
     function adminPage()
     {
         $allApplicants = $GLOBALS['dataLayer']->getApplicants();
