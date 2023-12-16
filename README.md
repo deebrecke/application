@@ -1,5 +1,5 @@
 # application
-![games](./images/ZiggyFeatherSmall.jpg)
+
 Mock job application for SDEV 328 Frameworks class
 
 This was a quarter long project in which we were tasked to create a job
